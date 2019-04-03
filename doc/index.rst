@@ -289,8 +289,17 @@ Component Team Structure (this needs a better heading?)
 
 Each Component should have the following roles occupied
 
-* CAM/Stakeholder - customer or user base for component
-* Product Owner - Product owner defintion here: `TSS Product Owner <https://confluence.lsstcorp.org/display/LTS/TSS+Product+Owner>`_
-* Lead Developer - Main developer for the component 
-* Backup Developer - developer to take over if the Lead Developer wins the lottery and runs away.
-* SW Manager - Personnel who can decide resolution, if there is conflict with the four roles above.
+CAM/Stakeholder 
+  customer or user base for component
+
+Product Owner 
+  Product owner defintion here: `TSS Product Owner <https://confluence.lsstcorp.org/display/LTS/TSS+Product+Owner>`_
+
+Lead Developer 
+  Main developer for the component 
+
+Backup Developer 
+  developer to take over if the Lead Developer wins the lottery and runs away.
+
+SW Manager 
+  Personnel who can decide resolution, if there is conflict with the four roles above.
