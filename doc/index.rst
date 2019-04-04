@@ -7,21 +7,21 @@
 TSSW Developer Guide
 ********************
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
 
 .. important::
 
     The following guide is not approved nor authorized by anyone.
     It only serves as a proposal for guidelines.
 
+
 Additional Resources
 ====================
 
+:doc:`jira`
+
 `TSS Product Owner <https://confluence.lsstcorp.org/display/LTS/TSS+Product+Owner>`_
 
-`TSS Jira Guidelines <https://confluence.lsstcorp.org/display/LTS/TSS+Jira+Guidelines>`_
+`TSS Jira Guidelines <https://confluence.lsstcorp.org/display/LTS/Jira>`_
 
 `Gitflow Workflow <https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow>`_
 
@@ -37,9 +37,9 @@ Component Resources
 * Internal Libraries, tools and similar items will NOT be considered components.
   However, they should have documentation that outlines their functionality.
   Components using this functionality should link to the CSC's documentation site.
-* Requirements & Schedule of the component is determined by the `Product Owner <https://confluence.lsstcorp.org/display/LTS/TSS+Product+Owner>`_ & the Component Developer.
+* Requirements & Schedule of the component is determined by the :term:`Product Owner` & the Component Developer.
   These two must work in tandem to determine what the resulting component shall be.
-  There is a `bi-weekly sprint planning meeting <https://confluence.lsstcorp.org/display/LTS/Jira>`_ to help facilitate this process.
+  There is a :ref:`bi-weekly sprint planning meeting <jira:Sprints>` to help facilitate this process.
 * Each application should have an unrestricted, high-level lsst.io site that defines and/or contains:
   
   * Release roadmap
@@ -64,7 +64,11 @@ Component Resources
 Jira workflow
 =============
 
-The Sprint in which these tasks are placed is defined `here <https://confluence.lsstcorp.org/display/LTS/Jira>`_.
+.. todo::
+
+    Update to current Jira workflow
+
+The Sprint in which these tasks are placed is defined :ref:`here <jira:Sprints>`.
 
 Please refer to the TSSW JIRA Workflow diagram above.
 
@@ -289,17 +293,26 @@ Component Team Structure (this needs a better heading?)
 
 Each Component should have the following roles occupied
 
-CAM/Stakeholder 
-  customer or user base for component
+.. glossary::
 
-Product Owner 
-  Product owner defintion here: `TSS Product Owner <https://confluence.lsstcorp.org/display/LTS/TSS+Product+Owner>`_
+  CAM/Stakeholder 
+    customer or user base for component
 
-Lead Developer 
-  Main developer for the component 
+  Product Owner 
+    Product owner defintion here: `TSS Product Owner <https://confluence.lsstcorp.org/display/LTS/TSS+Product+Owner>`_
 
-Backup Developer 
-  developer to take over if the Lead Developer wins the lottery and runs away.
+  Lead Developer 
+    Main developer for the component 
 
-SW Manager 
-  Personnel who can decide resolution, if there is conflict with the four roles above.
+  Backup Developer 
+    developer to take over if the Lead Developer wins the lottery and runs away.
+
+  SW Manager 
+    Personnel who can decide resolution, if there is conflict with the four roles above.
+
+
+Sources
+=======
+
+* Adapted from https://confluence.lsstcorp.org/display/LTS/TSS+Developer+Guide+-+Draft
+* https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
