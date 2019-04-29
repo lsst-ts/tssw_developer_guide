@@ -19,6 +19,8 @@ Additional Resources
 
 :doc:`jira`
 
+:doc:`docker`
+
 `TSS Product Owner <https://confluence.lsstcorp.org/display/LTS/TSS+Product+Owner>`_
 
 `TSS Jira Guidelines <https://confluence.lsstcorp.org/display/LTS/Jira>`_
