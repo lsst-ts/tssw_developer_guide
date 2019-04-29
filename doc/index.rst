@@ -17,19 +17,19 @@ TSSW Developer Guide
 Additional Resources
 ====================
 
-:doc:`jira`
-
-:doc:`docker`
-
 `TSS Product Owner <https://confluence.lsstcorp.org/display/LTS/TSS+Product+Owner>`_
 
 `TSS Jira Guidelines <https://confluence.lsstcorp.org/display/LTS/Jira>`_
 
 `Gitflow Workflow <https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow>`_
 
-.. todo::
+.. image:: JiraWorkflow.png
 
-    Add image of new workflow.
+Pages
+=====
+:doc:`jira`
+
+:doc:`docker`
 
 Component Resources
 ===================
