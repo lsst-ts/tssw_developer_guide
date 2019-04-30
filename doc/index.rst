@@ -31,6 +31,8 @@ Pages
 
 :doc:`docker`
 
+:doc:`python_guide`
+
 Component Resources
 ===================
 
