@@ -14,6 +14,16 @@ TSSW Developer Guide
     It only serves as a proposal for guidelines.
 
 
+Pages
+=====
+
+.. toctree::
+  :glob:
+  :maxdepth: 1
+
+  *
+  procedures/index
+
 Additional Resources
 ====================
 
@@ -25,13 +35,11 @@ Additional Resources
 
 .. image:: JiraWorkflow.png
 
-Pages
-=====
-:doc:`jira`
 
-:doc:`docker`
+Related Sites
+=============
 
-:doc:`python_guide`
+* `ts_xml <https://ts-xml.lsst.io>`_
 
 Component Resources
 ===================
@@ -43,7 +51,7 @@ Component Resources
   Components using this functionality should link to the CSC's documentation site.
 * Requirements & Schedule of the component is determined by the :term:`Product Owner` & the Component Developer.
   These two must work in tandem to determine what the resulting component shall be.
-  There is a :ref:`bi-weekly sprint planning meeting <jira:Sprints>` to help facilitate this process.
+  There is a :ref:`bi-weekly sprint planning meeting <procedures/jira:Sprints>` to help facilitate this process.
 * Each application should have an unrestricted, high-level lsst.io site that defines and/or contains:
   
   * Release roadmap
@@ -72,7 +80,7 @@ Jira workflow
 
     Update to current Jira workflow
 
-The Sprint in which these tasks are placed is defined :ref:`here <jira:Sprints>`.
+The Sprint in which these tasks are placed is defined :ref:`here <procedures/jira:Sprints>`.
 
 Please refer to the TSSW JIRA Workflow diagram above.
 

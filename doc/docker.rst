@@ -1,3 +1,7 @@
+***********************
+Development with Docker
+***********************
+
 CSC Development
 ===============
 :author: Tiago Ribeiro
