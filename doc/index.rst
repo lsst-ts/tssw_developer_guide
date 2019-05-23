@@ -87,7 +87,7 @@ Please refer to the TSSW JIRA Workflow diagram above.
 * Initial/Triage
   
   * Create the Task, Bug or Improvement.
-  * The intital assignee houd triage the ticket.
+  * The initial assignee should triage the ticket.
 
     * Ensure it is assigned correctly (Assignee, Component , etc)
     
@@ -124,7 +124,7 @@ Please refer to the TSSW JIRA Workflow diagram above.
 
 * In Review
 
-  * Once the code is complete and all unit tests are passing, intitate a pull request on the develop branch and assign it to the Reviewer(s).
+  * Once the code is complete and all unit tests are passing, initiate a pull request on the develop branch and assign it to the Reviewer(s).
   * The Reviewer ensures
 
     * Code is complete and understandable.
@@ -149,7 +149,7 @@ Please refer to the TSSW JIRA Workflow diagram above.
 * Resolved
 
   * This is the purview of QA.
-  * QA does another spot review, to ensure the requirements are spelled out and properly met, all documentation is provided and the unit tests are passsing.
+  * QA does another spot review, to ensure the requirements are spelled out and properly met, all documentation is provided and the unit tests are passing.
   * This is also when QA works on the higher level tests (Functional, Integration, etc).
   * Once this is Complete, QA moves to Closed.
 
@@ -159,7 +159,7 @@ Please refer to the TSSW JIRA Workflow diagram above.
 
     * Feature was successfully implemented.
     * Feature was de-scoped; proper explanation provided.
-    * Ticket was not implemented for some othe reason; proper explanation provided.
+    * Ticket was not implemented for some other reason; proper explanation provided.
 
 Versioning
 ==========
