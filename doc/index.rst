@@ -8,12 +8,6 @@ TSSW Developer Guide
 ********************
 
 
-.. important::
-
-    The following guide is not approved nor authorized by anyone.
-    It only serves as a proposal for guidelines.
-
-
 Pages
 =====
 
