@@ -13,6 +13,7 @@ TSSW Developer Guide
     The following guide is not approved nor authorized by anyone.
     It only serves as a proposal for guidelines.
 
+`TSS Organization and Management Document <https://docushare.lsst.org/docushare/dsweb/Get/LTS-928/LTS-928%20V1.pdf>`_
 
 Pages
 =====
