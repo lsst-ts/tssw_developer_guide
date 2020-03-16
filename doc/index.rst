@@ -282,6 +282,20 @@ For pure Python only applications, setuptools is a fine solution.
 LabVIEW may require another solution as well.
 This area is quite flexible, as the only real constraint is that it must be compatible with Puppet.
 
+Unit Testing
+============
+Whenever and wherever possible, unit tests should be run for any releasable application.  Unit tests should exist in a tests/ directory within the application git repository.  Explanations for the setup, installation and execution of the unit tests should be in the README file, also within the application git repo.  TSSW currently uses GitHub to host our code repositories, and GitHub presents the README file on the landing page of the repo, and therefore is an excellent location to provide this type of instruction.
+
+As an example, please reference the `XML <https://github.com/lsst-ts/ts_xml>`_ repo and its unit tests.
+
+Finally, integration with the `TSSW Continuous Integration environment <https://tssw-ci.lsst.org/>`_ provides an opportunity to regularly run the unit tests.  In fact, each application GitHub repository should enable branch protections for things like Pull-Requests and require a successful Jenkins build that includes passing the unit tests.
+
+The build and release process is fully documented in 
+
+.. todo::
+
+    Build and release document
+
 Managing Dependencies
 =====================
 
