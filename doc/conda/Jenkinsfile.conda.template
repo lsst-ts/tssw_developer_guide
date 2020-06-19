@@ -1,16 +1,4 @@
-=================
-Conda Jenkinsfile
-=================
-
-This example is pretty much ready to go.
-Replace `csc_name` with the name of the package/csc.
-Replace `ts_config_{name_of_config}` with one of the configuration repos.
-For more general information read `TSTN-003 <https://tstn-003.lsst.io>`_.
-
-
-.. code::
-
-    pipeline {
+pipeline {
     agent any
     environment {
         package_name = "{csc_name}"
@@ -101,68 +89,4 @@ For more general information read `TSTN-003 <https://tstn-003.lsst.io>`_.
             """
         }
     }
-    }
-
-Just change the set name to whatever the package name is.
-Add and change the dependencies to match your package.
-
-.. code::
-
-    {% set data= load_setup_py_data() %}
-    {% set name= "ts-athexapod" %}
-    package:
-    name: {{ name }}
-    version: {{ data.get('version') }}
-
-    source:
-    path: ../
-
-    build:
-    script: python -m pip install --no-deps --ignore-installed .
-    script_env:
-        - PATH
-        - PYTHONPATH
-        - LD_LIBRARY_PATH
-        - OSPL_HOME
-        - PYTHON_BUILD_VERSION
-        - PYTHON_BUILD_LOCATION
-        - TS_CONFIG_ATTCS_DIR
-        - LSST_DDS_DOMAIN
-
-    test:
-    requires:
-        - pytest
-        - pytest-flake8
-        - pytest-cov
-        - asynctest
-        - numpy
-        - astropy
-        - jsonschema
-        - pyyaml
-        - boto3
-        - moto
-        - ts-dds
-        - ts-idl
-        - ts-salobj
-    source_files:
-        - python
-        - bin
-        - tests
-        - schema
-        - setup.cfg
-    commands:
-        - py.test
-
-    requirements:
-    host:
-        - python
-        - pip
-        - setuptools_scm
-        - setuptools
-        - pytest-runner
-    run:
-        - python
-        - setuptools
-        - setuptools_scm
-        - ts-salobj
-        - ts-idl
+}
