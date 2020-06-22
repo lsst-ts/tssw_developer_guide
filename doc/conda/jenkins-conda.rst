@@ -19,5 +19,6 @@ A template has been included below.
 Replace `csc_name` with the name of the package/csc.
 Replace `ts_config_{name_of_config}` with one of the configuration repos.
 
-.. literalinclude:: Jenkinsfile.conda.template
+.. .. literalinclude:: Jenkinsfile.conda.template
 
+.. note:: PLACEHOLDER
