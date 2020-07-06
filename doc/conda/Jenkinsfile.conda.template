@@ -9,7 +9,7 @@ pipeline {
     }
 
     stages {
-        stage("Clone ts_config{name_of_config}") {
+        stage("Clone ts_config_{name_of_config}") {
             steps {
                 withEnv(["HOME=${env.WORKSPACE}"]) {
                     sh """
