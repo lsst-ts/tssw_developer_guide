@@ -6,3 +6,5 @@ _g.update(build_package_configs(
 
 extensions.append('sphinx.ext.autosectionlabel')
 autosectionlabel_prefix_document=True
+
+intersphinx_mapping['dm_developer_guide'] = ('https://developer.lsst.io', None)
