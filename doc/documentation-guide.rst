@@ -21,7 +21,7 @@ The following steps will explain how to use it.
     cookiecutter https://github.com/lsst-ts/cookiecutter_tssw_csc_doc
     doc [doc]: # The name of the folder where the documentation goes, this option should only be changed if the standard folder name is changed.
     csc_name [Barracuda]: # the name of the CSC, affects things like api generation, xml badge location
-    csc_repo_name [ts_barracuda]: # The name of the repo, affects things like the badges for JIRA, GitHub and Jenkins
+    csc_repo_name [ts_barracuda]: # The name of the repo should include ``ts_`` or ``dm_``, affects things like the badges for JIRA, GitHub and Jenkins
 
 Once those three questions are answered then a brand new doc folder will be added to the CSC.
 Inside of the files, there are comments that explain how to fill out each section in detail.
