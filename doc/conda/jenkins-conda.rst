@@ -13,12 +13,11 @@ Another thing is to change requirements so that they match the CSC's.
 Keep in mind that the test requirements need to include test framework dependencies.
 
 .. literalinclude:: meta.yaml.template
+    :language: yaml+jinja
 
 The next step is to create ``Jenkinsfile.conda`` file.
 A template has been included below.
-Replace `csc_name` with the name of the package/csc.
-Replace `ts_config_{name_of_config}` with one of the configuration repos.
+Replace ``csc_name`` with the name of the package/csc.
+Replace ``csc_config_repo`` with one of the configuration repos.
 
-.. .. literalinclude:: Jenkinsfile.conda.template
-
-.. note:: PLACEHOLDER
+.. literalinclude:: Jenkinsfile.conda.template

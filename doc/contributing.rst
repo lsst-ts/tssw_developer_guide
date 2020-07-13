@@ -10,3 +10,4 @@ It is written in RST format and built with sphinx.
 It uses `documenteer <https://documenteer.lsst.io>`_ as its tool chain.
 In order to build the documentation locally, use the following command ``package-docs build``.
 If making an improvement or fixing an issue, then file a ticket according to the :doc:`/procedures/jira` procedure.
+Then use the :doc:`documentation guide <documentation-guide>` as a starting point for writing your content.
