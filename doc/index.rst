@@ -24,6 +24,7 @@ Pages
 
   *
   procedures/index
+  conda/index
 
 Additional Resources
 ====================
