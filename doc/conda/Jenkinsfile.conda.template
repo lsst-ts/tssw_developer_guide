@@ -2,10 +2,11 @@ pipeline {
     agent docker {
         image 'lsstts/conda_package_builder:latest'
         alwaysPull 'true'
+        # change name_of_config to whatever configuration repo the csc is placed under, i.e. ATCS, etc.
         args "--env TS_CONFIG_{name_of_config}_DIR=/home/saluser/ts_config_{name_of_config} --env LSST_DDS_DOMAIN=citest -u root --entrypoint=''"
     }
     environment {
-        package_name = "{csc_name}"
+        package_name = "{csc_name}" # change this to the name of the csc package.
     }
 
     stages {

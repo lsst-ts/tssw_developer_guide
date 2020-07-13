@@ -489,6 +489,8 @@ What about EUPs's tagging system?
 What about applications that integrate with the LSST Science Pipeline(LSP)?
     DM has agreed to support that software becoming conda packages.
 
+:doc:`Move onto adding a Jenkinsfile for building your conda recipe <jenkins-conda>`.
+
 Sources
 =======
 * https://docs.conda.io/projects/conda-build/en/latest/
