@@ -16,8 +16,8 @@ script_env:
     - OSPL_HOME
     - PYTHON_BUILD_VERSION
     - PYTHON_BUILD_LOCATION
-    - TS_CONFIG_ATTCS_DIR
     - LSST_DDS_DOMAIN
+    # Replace with csc configuration repo directory, i.e. TS_CONFIG_ATTCS_DIR for athexapod
 
 test:
 requires:
