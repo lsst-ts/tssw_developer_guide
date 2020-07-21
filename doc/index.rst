@@ -7,12 +7,6 @@
 TSSW Developer Guide
 ####################
 
-
-.. important::
-
-    The following guide is not approved nor authorized by anyone.
-    It only serves as a proposal for guidelines.
-
 `TSS Organization and Management Document <https://docushare.lsst.org/docushare/dsweb/Get/LTS-928/LTS-928%20V1.pdf>`_
 
 Pages
@@ -31,8 +25,6 @@ Additional Resources
 
 `TSS Product Owner <https://confluence.lsstcorp.org/display/LTS/TSS+Product+Owner>`_
 
-`TSS Jira Guidelines <https://confluence.lsstcorp.org/display/LTS/Jira>`_
-
 `Gitflow Workflow <https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow>`_
 
 .. image:: JiraWorkflow.png
@@ -50,19 +42,19 @@ Component Resources
   A component may consist of many applications (i.e. CSC created from the LabVIEW component template).
 * Internal Libraries, tools and similar items will NOT be considered components.
   However, they should have documentation that outlines their functionality.
-  Components using this functionality should link to the CSC's documentation site.
+  Components using this functionality should be linked to the CSC's documentation site.
 * Requirements & Schedule of the component is determined by the :term:`Product Owner` & the Component Developer.
   These two must work in tandem to determine what the resulting component shall be.
   There is a :ref:`bi-weekly sprint planning meeting <procedures/jira:Sprints>` to help facilitate this process.
 * Each application should have an unrestricted, high-level lsst.io site that defines and/or contains:
   
   * Release roadmap
-  * User Guide/Manuals
+  * Developer & User Guide/Manuals
   * Dependencies
   * Reverse chronological order of releases, linked to Detailed Release Notes
   * Github repository link
   * Jenkins build project
-  * Link to Jira Component
+  * Link to Jira issues
 
 * These pages should be stored under a TBD hierarchy.
 * Detailed Release Notes should be part of the documentation site as well.
@@ -78,10 +70,6 @@ Component Resources
 Jira workflow
 =============
 
-.. todo::
-
-    Update to current Jira workflow
-
 The Sprint in which these tasks are placed is defined :ref:`here <procedures/jira:Sprints>`.
 
 Please refer to the TSSW JIRA Workflow diagram above.
@@ -94,10 +82,9 @@ Please refer to the TSSW JIRA Workflow diagram above.
     * Ensure it is assigned correctly (Assignee, Component , etc)
     
       * Ensure the ticket is assigned to an actual, currently employed at LSST, person.
-      * Each ticket is assigned a JIRA Component.
-        If an Assignee is not designated, the JIRA Component will determine the assignee.
-    
-        * The component to assignee designation can be found `here <https://jira.lsstcorp.org/projects/TSS?selectedItem=com.atlassian.jira.jira-projects-plugin:components-page>`_.
+      * Each ticket is assigned a JIRA Epic.
+      * A label with the name of the component should be added to the ticket.
+
 
     * Ensure the Priority is set correctly (Ticket should not have the "Undefined" priority).
     * A Sprint can be chosen at creation (preferably by the person doing the work for this ticket).
@@ -112,17 +99,16 @@ Please refer to the TSSW JIRA Workflow diagram above.
 
     * No active development is ever done on the Master or Develop branches.
     
-  * Document the requirements (via Requirements Template)
   * Write the code.
   * Write the unit tests.
-  * Update release Notes & pertinent doc strings
+  * Update documentation
   * When complete, move to In Review.
 
     * Complete meaning:
 
-      * Add a link of the commit to the ticket.
-      * Unit tests exist, have been successfully run and results have been added to the ticket or commit.
-      * Add a link to the completed release notes
+      * Add a link of the PR to the ticket.
+      * Unit tests exist, have been successfully run and results have been added to the ticket or PR.
+      * Add a link to the generated documentation site
 
 * In Review
 
@@ -130,16 +116,19 @@ Please refer to the TSSW JIRA Workflow diagram above.
   * The Reviewer ensures
 
     * Code is complete and understandable.
-    * Unit tests are passing.
+    * CI is passing.
     * Documentation is done, including a reference to the lsst.io site
-    * All Requirements, as defined in the ticket Description, are met.
+    * All requirements, as defined in the ticket description, are met.
 
-  * If findings occur
+  * If issues are found
 
-    * Updates Jira with findings 
+    * Update Jira with issue
+
+      * Comments on GitHub PR are considered acceptable as well
+ 
     * Sends back to developer
 
-  * If no findings occur
+  * If no issues are found
 
     * Moves Jira ticket to review complete with approval/minor changes.
 
@@ -148,20 +137,19 @@ Please refer to the TSSW JIRA Workflow diagram above.
   * The Developer then merges the pull-request (see Merge Process, below).
   * Moves ticket to Resolved.
 
-* Resolved
+* Done
 
   * This is the purview of QA.
-  * QA does another spot review, to ensure the requirements are spelled out and properly met, all documentation is provided and the unit tests are passing.
-  * This is also when QA works on the higher level tests (Functional, Integration, etc).
-  * Once this is Complete, QA moves to Closed.
-
-* Closed
+  
+    * QA does another spot review, to ensure the requirements are spelled out and properly met, all documentation is provided and the unit tests are passing.
+    * This is also when QA works on the higher level tests (Functional, Integration, etc).
+    * Once this is Complete, QA moves to Closed.
 
   * The ticket is complete.
 
     * Feature was successfully implemented.
-    * Feature was de-scoped; proper explanation provided.
-    * Ticket was not implemented for some other reason; proper explanation provided.
+    * Feature was invalid; proper explanation provided.
+    * Ticket was already fixed; proper explanation provided.
 
 Versioning
 ==========
@@ -269,7 +257,7 @@ For reference, see `Git-Branching-Rebasing <https://git-scm.com/book/en/v2/Git-B
 Building Applications
 =====================
 
-`Jenkins <https://ts-ci.lsst.codes/>`_ is the chosen Continuous Integration platform.
+`Jenkins <https://tssw-ci.lsst.org/>`_ is the chosen Continuous Integration platform.
 Each application should have a build project in Jenkins.
 These applications should then have a dedicated build server.
 

@@ -2,22 +2,23 @@
 TSSW Jira
 #########
 
-.. todo::
-
-    Update with current information
-
 Stand Up Etiquette
 ==================
 
-* Meetings are in the DKist Conference Room at 10 AM Tucson time M-F
-* There is a blue jeans connection and that number is located in the tssw_scrum channel as a pinned message
+:Sprint Lead-Scrum Master: Wouter Van Reeven
+
+* Meetings are in the DKist Conference Room at 10 AM Tucson time M-F except on holidays
+
+    .. note:: Given the current situation, stand up has now become BlueJeans only for the foreseeable future.
+
+* There is a Blue Jeans connection and that number is located in the tssw_scrum channel as a pinned message
 * Show up on time
-* if you are unable to attend, email/message the Sprint Lead your current status
+* if you are unable to attend, email/message the Sprint Lead to let them know.
 
     * For vacations, training, conferences etc, send status update on the last day of work prior to the event.
     * Do not send updates during the event
 
-* Each person gives current status for one minute
+* Each person gives current status for around one minute
 
     * Update any task that gone to Review or Resolved
     * Update team on current task in progress
@@ -55,17 +56,14 @@ Sprints
     * Notify Sprint Lead of time frame work is expected to be resolved
 
 * Keep commitment to approximately 8 story points (2 weeks)
-* Monthly Retrospective Meetings
 
-    * Go over accomplishments
-    * Go over any process issues that can be improved
-    * Explain future schedule and path
+    * Each sprint assumes 2 story points for meetings and other administrative tasks
 
 Task Process
 ============
 
 * Do not create Epics.
-  That is the responsiblity of the Sprint Lead.
+  That is the responsibility of the Sprint Lead or manager.
 * Task creation
 
     * Keep task size between 1 and 5 story points
@@ -81,7 +79,7 @@ Task Process
     * Required fields to create a task
 
         Project
-            Telescope and Site Software(TSS)
+            Data Management(DM)
         
         Issue Type
             Task
@@ -89,15 +87,12 @@ Task Process
         Summary
             Quick description of the work to be accomplished
 
-        Component/s
-            Appropriate WBS Component in the list
-
         Assignee
             Click the Assign to me link
 
         Description field
             * Overview of what the task is to accomplish
-            * List any prereqsites for the task to start or complete 
+            * List any prerequisites for the task to start or complete 
             * List any Unit tests, if any, for a reviewer to run
 
         Story Points
@@ -105,6 +100,7 @@ Task Process
 
         Epic Link
             Link to the current epic
+            Epic also determines appropriate WBS number to charge on timesheet
 
         * Feel free to use any of the other fields, though they are not required
 
@@ -135,30 +131,24 @@ Review process
 * Verify all description requirements are met
 * Verify all acceptance criteria are met
 * Verify quality
+* if making a GitHub PR, you can assign the reviewer as a reviewer for it as well
 * If findings occur
 
     * Update comment field with findings
-    * Move to In Progress (Review Fail)
+    * Move to In Progress (Review Fail) - step optional
     * Notify the task owner
 
 * If no findings occur
 
     * Move to Resolved
 
-Bug and Improvement Process - (unofficial)
+Bug and Improvement Process
 
 * Bug and Improvement issues can be created by anybody with access to Jira
-* Scrum master will be assigned all Bugs and Improvements for triage
-
-    * Scrum master will change assignee
-
-* Bugs and Improvements will be prioritized and approved through an Issue Triage team
-
-    * Attendees TBS
-    * Triage team will indentify which developer/subsystem will be tasked with the issue
+* Use the CSC master table to correctly assign the developer
 
 * No work will be completed on an issue without approval
-* If a bug or Improvement is indentified to be 1 Story Point or more, it will be added to a Sprint when work is started
+* If a bug or Improvement is identified to be 1 Story Point or more, it will be added to a Sprint when work is started
 * If a Bug or Improvement is less than 1 Story Point, a task will be created with enough issues linked to achieve at least 1 Story Point
 * Work on Bugs and Improvements will follow the standard Task process
 
@@ -174,7 +164,3 @@ Closing Process
         * Update Comment field with findings
         * Move to Open
         * Notify the task owner
-
-    * if work is complete
-
-        * Move to Closed
