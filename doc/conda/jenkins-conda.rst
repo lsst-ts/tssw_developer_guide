@@ -8,6 +8,8 @@ The first step is to create a conda recipe for a CSC.
 The :doc:`conda development guide <conda>` will be helpful.
 A template for doing so has been included on this page.
 
+Create a ``conda`` folder inside the root directory CSC repository.
+Then touch a :file:`meta.yaml` file inside of the ``conda`` folder.
 Change the ``csc-name`` so that it becomes the name of the csc.
 Another thing is to change requirements so that they match the CSC's.
 Keep in mind that the test requirements need to include test framework dependencies.
