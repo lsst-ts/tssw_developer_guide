@@ -1,25 +1,39 @@
 pipeline {
-    agent docker {
-        image 'lsstts/conda_package_builder:latest'
-        alwaysPull 'true'
-        # change name_of_config to whatever configuration repo the csc is placed under, i.e. ATCS, etc.
-        args "--env TS_CONFIG_{name_of_config}_DIR=/home/saluser/ts_config_{name_of_config} --env LSST_DDS_DOMAIN=citest -u root --entrypoint=''"
+    agent{ 
+        docker {
+            image 'lsstts/conda_package_builder:latest'
+            alwaysPull 'true'
+            args "--env {csc_config_repo}_DIR=/home/saluser/{csc_config_repo} --env LSST_DDS_DOMAIN=citest -u root --entrypoint=''"
+            # csc_config_repo should be changed to the CSC's configuration repo name i.e. ts_config_attcs for the athexapod.
+            # These could be changed to environment variables but that has not been tested yet, so does not make it into the form of the template.
+        }
     }
     environment {
-        package_name = "{csc_name}" # change this to the name of the csc package.
+        package_name = "{csc_name}"
+        # name of the csc package i.e. "ts_athexapod"
+        OSPL_HOME="/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux"
     }
-
+    options {
+        buildDiscarder(
+            logRotator(
+                artifactDaysToKeepStr: '',
+                artifactNumToKeepStr: '',
+                daysToKeepStr: '14',
+                numToKeepStr: '10'
+                ))
+        disableConcurrentBuilds()
+    }
     stages {
-        stage("Clone ts_config_{name_of_config}") {
+        stage("Clone {csc_config_repo}"){
             steps {
                 withEnv(["HOME=${env.WORKSPACE}"]) {
                     sh """
-                        git clone https://github.com/lsst-ts/ts_config_{name_of_config}
+                    cd /home/saluser
+                    git clone https://github.com/lsst-ts/{csc_config_repo}.git
                     """
                 }
             }
         }
-
         stage("Create Conda package") {
             when {
                 buildingTag()
@@ -27,10 +41,12 @@ pipeline {
             steps {
                 withEnv(["HOME=${env.WORKSPACE}"]) {
                     sh """
-                    cd /home/saluser/source/conda 
-                    source /home/saluser/miniconda3/bin/activate 
-                    source "$OSPL_HOME/release.com"
-                    conda build --prefix-length 100 .'
+                    cd ${HOME}/conda 
+                    source /home/saluser/miniconda3/bin/activate
+                    conda config --add channels conda-forge
+                    conda config --add channels lsstts
+                    source ${OSPL_HOME}/release.com
+                    conda build --prefix-length 100 .
                     """
                 }
             }
@@ -44,9 +60,11 @@ pipeline {
             steps {
                 withEnv(["HOME=${env.WORKSPACE}"]) {
                     sh """
-                        cd /home/saluser/source/conda
+                        cd ${HOME}/conda
                         source /home/saluser/miniconda3/bin/activate
-                        source "\$OSPL_HOME/release.com"
+                        conda config --add channels conda-forge
+                        conda config --add channels lsstts
+                        source ${OSPL_HOME}/release.com
                         conda build -c lsstts/label/dev --prefix-length 100 .
                     """
                 }
@@ -63,7 +81,7 @@ pipeline {
                         sh """
                         source /home/saluser/miniconda3/bin/activate
                         anaconda login --user ${anaconda_user} --password ${anaconda_pass}
-                        anaconda upload -u lsstts --force ~/miniconda3/conda-bld/linux-64/ts-${package_name}*.tar.bz2
+                        anaconda upload -u lsstts --force /home/saluser/miniconda3/conda-bld/linux-64/ts-${package_name}*.tar.bz2
                         """
                     }
                 }

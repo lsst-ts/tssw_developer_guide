@@ -99,31 +99,43 @@ Docker Install via Docker's repository
 
 #. Install required packages
 
-    > $ sudo yum install -y yum-utils
+    ..    prompt:: bash
+    
+        sudo yum install -y yum-utils
 
 #. Set up the stable repository:
 
-    > $ sudo yum-config-manager \
-    --add-repo \
-    https://download.docker.com/linux/centos/docker-ce.repo
+    .. prompt:: bash
+    
+        sudo yum-config-manager \
+        --add-repo \
+        https://download.docker.com/linux/centos/docker-ce.repo
 
 #. Install the latest version of Docker CE and containerd:
 
-    $ sudo yum install docker-ce docker-ce-cli containerd.io 
+    .. prompt:: bash
+     
+        sudo yum install docker-ce docker-ce-cli containerd.io 
 
 #. Start Docker (Docker is installed but not started):
 
-    $ sudo docker run hello-world
+    .. prompt:: bash
+    
+        sudo docker run hello-world
 
 #. Post install
 
     #. Create the docker group:
 
-        $ sudo groupadd docker
+        .. prompt:: bash
+        
+            sudo groupadd docker
 
     #. Add your user to the docker group:
 
-        $ sudo usermod -aG docker $USER
+        .. prompt:: bash
+        
+            sudo usermod -aG docker $USER
 
     #. Log out and log back in so that your group membership is re-evaluated.
 
@@ -131,7 +143,9 @@ Docker Install via Docker's repository
 
     #. Verify that you can run docker commands without sudo:
 
-        $ docker run hello-world
+        .. prompt:: bash
+        
+            docker run hello-world
 
 Configure Docker with the overlay2 storage driver
 -------------------------------------------------
@@ -140,20 +154,26 @@ Configure Docker with the overlay2 storage driver
 
     #. Verify you CentOS is uing 3.10.0-514 of the Linux kernel or higher
 
-        $uname -s -r
+        .. prompt:: bash
+
+            uname -s -r
 
     # Determine filesystem type
 
-        $ df -TH /home
+        .. prompt:: bash
+
+            df -TH /home
 
     #. If filesystem is xfs:
 
         #. Verify that the ftype option is set to 1.
 
-            $ xfs_info /home 
+            .. prompt::  bash
+            
+                xfs_info /home 
 
-        #. If ftype is set to 0, then format the xfs filesystem correctly, use the flag -n ftype=1 ***
-            *** The overlay2 driver is supported on xfs backing filesystems, but only with d_type=true enabled.
+        #. If ftype is set to 0, then format the xfs filesystem correctly, use the flag -n ftype=1
+            The overlay2 driver is supported on xfs backing filesystems, but only with d_type=true enabled.
             (d_type == "directory entry type"; used by Linux kernel to describe the information of a directory on the filesystem)
 
         #. Easier option, if available, is to configure Docker to point to an ext4 mounted filesystem.
@@ -173,41 +193,53 @@ Configure Docker with the overlay2 storage driver
 
     #. Stop Docker
 
-        $ sudo systemctl stop docker
+        .. prompt:: bash
+        
+            sudo systemctl stop docker
 
     #. If necessary, copy the contents of the docker root dir(by default:/var/lib/docker) to a temporary location.
 
-        $ cp -au /var/lib/docker /var/lib/docker.back
+        .. prompt:: bash
+        
+            cp -au /var/lib/docker /var/lib/docker.back
 
     #. Edit /etc/docker/daemon.json.
         If it does not yet exist, create it.
         Assuming that the file was empty, add the following contents.
 
-        {
-        "storage-driver": "overlay2"
-        }
+        .. code::
+
+            {
+            "storage-driver": "overlay2"
+            }
 
         .. note::
             If you wish to change the default docker root dir (recommended, especially if an ext4 filesystem is available), then also add the new path to /etc/docker/daemon.json as follows:
 
+            .. code::
+
                 {
                 "data-root":"/new/data/root/path"
                 }
-                e.g.
-                    {
-                    "data-root":"/home2/docker-base/docker"
-                    }
+                # e.g.
+                {
+                "data-root":"/home2/docker-base/docker"
+                }
     
     #. start Docker
 
-        $ sudo systemctl start docker
+        .. prompt:: bash
+        
+            sudo systemctl start docker
 
     #. Verify that the daemon is using the overlay2 storage driver.
         Use the docker info command and look for Storage Driver and Backing filesystem.
 
-        $ docker info
+        .. prompt:: bash 
+        
+            docker info
 
-            e.g. xfs file system, default Docker Root Dir 
+            # e.g. xfs file system, default Docker Root Dir 
 
                 Containers: 0
                 Images: 0
@@ -219,7 +251,7 @@ Configure Docker with the overlay2 storage driver
                 Docker Root Dir:/etc/lib/docker
                 <output truncated>
 
-            e.g. ext4 filesystem,
+            # e.g. ext4 filesystem,
 
                 Containers: 0
                 Images: 0
@@ -234,6 +266,7 @@ Configure Docker with the overlay2 storage driver
 SAL Development
 ===============
 :author: Russell Owen
+
 
 .. note::
     These instructions are useful for those planning on developing SAL with the development container.
@@ -260,21 +293,28 @@ This is not intended for deployment!
 * Put the following into your `~/.bashrc` file so you can easily run the lsst/queue Docker container.
   There is nothing magic about `--name queue`, and indeed if you want to have more than one lsst/queue container running at the same time you must assign a unique name to each one.
 
-  alias runqueue="docker run -it --rm --name queue \
-  -v $HOME/.config:/home/saluser/.config \
-  -v <your_tsrepos>:/home/saluser/tsrepos \
-  lsst/queue \
-  /home/saluser/tsrepos/docker/queue/setup.sh
+  .. code::
+
+    alias runqueue="docker run -it --rm --name queue \
+    -v $HOME/.config:/home/saluser/.config \
+    -v <your_tsrepos>:/home/saluser/tsrepos \
+    lsst/queue \
+    /home/saluser/tsrepos/docker/queue/setup.sh
+
+
 * This shares your .config dir so your Docker container can find your standard flake8 config.
   I have attached my ~/.config/flake8 file, which matches LSST standards. 
+  
   .. warning::
     It will download with an extension ".dms" which you should remove, so the final name is just "flake8".
 
 * To get started with your Docker container, in a fresh terminal session type the following:
 
-    $ runqueue
-    $ cd tsrepos/ts_...
-    $ scons
+    .. prompt:: bash
+
+        $ runqueue
+        $ cd tsrepos/ts_...
+        $ scons
 
 This will build Test and Script SALPY libraries and run the unit tests.
 Note that having scons build SALPY libraries is unique to ts_sal (because proving that libraries can be built is an important test in its own right). 
@@ -309,6 +349,7 @@ For other ts_packages you have to build the libraries you want before running un
 Docker
 ======
 :author: Eric Coughlin
+
 Docker is a container(specialized vm) builder which allows for the deployment of applications in exact(specified)
 conditions.
 It is very helpful in allowing applications to be developed and therefore deployed in the ideal working conditions.
