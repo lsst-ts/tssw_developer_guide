@@ -63,7 +63,7 @@ Task Process
 ============
 
 * Do not create Epics.
-  That is the responsibility of the Sprint Lead or manager.
+  That is the responsibility of the Manager.
 * Task creation
 
     * Keep task size between 1 and 5 story points
@@ -101,6 +101,9 @@ Task Process
         Epic Link
             Link to the current epic
             Epic also determines appropriate WBS number to charge on timesheet
+
+        Team
+            Telescope and Site
 
         * Feel free to use any of the other fields, though they are not required
 

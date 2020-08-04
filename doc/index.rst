@@ -84,6 +84,7 @@ Please refer to the TSSW JIRA Workflow diagram above.
       * Ensure the ticket is assigned to an actual, currently employed at LSST, person.
       * Each ticket is assigned a JIRA Epic.
       * A label with the name of the component should be added to the ticket.
+      * Each ticket is assigned a component that begins with ``ts_``
 
 
     * Ensure the Priority is set correctly (Ticket should not have the "Undefined" priority).
