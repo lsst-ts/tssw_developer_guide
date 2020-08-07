@@ -1,0 +1,26 @@
+ 
+ARG deploy_tag=salobj_v5.7.0
+
+FROM lsstts/deploy-env:${deploy_tag}
+
+LABEL maintainer Tiago Ribeiro <tribeiro@lsst.org>
+
+ARG {csc-name}=1.1.1
+ARG idl=1.1.3_4.8.0
+ARG config=v0.5.0
+
+RUN source /home/saluser/.setup.sh && \
+    conda install -c lsstts {csc-name}=${csc-name} ts-idl=${idl}
+
+RUN git clone https://github.com/lsst-ts/{config_repo}.git
+
+WORKDIR /home/saluser/{config_repo}
+
+RUN git checkout ${config} -b ${config}
+
+WORKDIR /home/saluser/
+
+ENV {config_repo}_DIR=/home/saluser/{config_repo}
+ENV RUN_ARG=""
+
+COPY setup.sh /home/saluser/.setup.sh

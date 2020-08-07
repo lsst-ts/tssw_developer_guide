@@ -1,9 +1,6 @@
-************
-Python Guide
-************
-
-.. important::
-   The following document is not approved nor authorized by anyone. It only serves as a proposal for guidelines.
+######
+Python
+######
 
 .. note::
     This guide is under development and is likely to change.
@@ -15,30 +12,18 @@ Style
 =====
 
 Python has many recommendations for writing python code.
-One of the primary sources of truth regarding styling is the Python Enhancement
-Proposal number 8 (PEP-8) which codifies the standard Python style
-guide.
-The Telescope and Site Software Team will endeavor to follow this
-guide except in cases regarding salobj do_methods which inherit from SAL
-naming conventions.
-As these are recommendations, any function or method
-names should follow consistent patterns, but is not enforced by python
-itself.
-If a convention on an LSST stack package is to use
-lowerCamelCase then endeavor to follow that convention.
-If working with a package that uses underscore_separation then one should follow that
-convention.
-However, try to avoid mixing the two in order to improve
-readability except in the aforementioned exceptions regarding SAL
-compatibility.
+One of the primary sources of truth regarding styling is the Python Enhancement Proposal number 8 (PEP-8) which codifies the standard Python style guide.
+The Telescope and Site Software Team will endeavor to follow this guide except in cases regarding salobj do_methods which inherit from SAL naming conventions.
+As these are recommendations, any function or method names should follow consistent patterns, but is not enforced by python itself.
+If a convention on an LSST stack package is to use lowerCamelCase then endeavor to follow that convention.
+If working with a package that uses underscore_separation then one should follow that convention.
+However, try to avoid mixing the two in order to improve readability except in the aforementioned exceptions regarding SAL compatibility.
 
 PEP-8
 -----
 
-Here are key excerpts from PEP-8 which is linked
-`here <https://www.python.org/dev/peps/pep-0008/>`__ in its entirety.
-This document deals with pretty much everything regarding python code
-and so I will endeavor to highlight relevant points.
+Here are key excerpts from PEP-8 which is linked `here <https://www.python.org/dev/peps/pep-0008/>`__ in its entirety.
+This document deals with pretty much everything regarding python code and so this document will endeavor to highlight relevant points.
 
 -  spaces instead of tabs for indentation
 

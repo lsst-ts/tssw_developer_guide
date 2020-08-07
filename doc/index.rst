@@ -19,6 +19,9 @@ Pages
   *
   procedures/index
   conda/index
+  docker/index
+  deployment/index
+  language/index
 
 Additional Resources
 ====================
