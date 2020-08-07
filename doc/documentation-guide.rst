@@ -25,3 +25,25 @@ The following steps will explain how to use it.
 
 Once those three questions are answered then a brand new doc folder will be added to the CSC.
 Inside of the files, there are comments that explain how to fill out each section in detail.
+
+Publishing lsst.io Site
+=======================
+
+Assuming that a :file:`Jenkinsfile` exists.
+Add the following stage to it.
+
+.. code::
+
+    stage('Build and Upload Documentation') {
+        steps {
+            withEnv(["HOME=${env.WORKSPACE}"]) {
+                sh """
+                source /home/saluser/.setup_dev.sh
+                pip install .
+                pip install -r doc/requirements.txt
+                package-docs build
+                ltd upload --product [ts-name] --git-ref ${GIT_BRANCH} --dir doc/_build/html
+                """
+            }
+        }
+    }
