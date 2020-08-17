@@ -190,7 +190,7 @@ Users can install it locally on their machines (works on MacOS).
 You should run this on your development computer, where you want to store your code, not inside the container.
 
 It is important to understand that development happens on your local computer, using your preferable development tools(PyCharm,Atom,emacs,vim,vi).
-Docker will be used to generate the SAl libraries, to run unit tests and run the code.
+Docker will be used to generate the SAL libraries, to run unit tests and run the code.
 
 Pulling the development environment
 -----------------------------------
@@ -228,7 +228,7 @@ In case you want to fall back to the xml inside the container you just need to d
 Running scons and CSC Unit tests
 --------------------------------
 
-For unit tests that uses sal to run properly with scons you need to modify the file <repository_root>/tests/SConscript to have something like this:
+For unit tests that use sal to run properly with scons you need to modify the file <repository_root>/tests/SConscript to have something like this:
 
 .. code::
 
