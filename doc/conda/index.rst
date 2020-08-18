@@ -1,6 +1,8 @@
-=============
-Conda Manuals
-=============
+============
+Conda Guides
+============
+
+Guides for using conda.
 
 .. toctree::
     :glob:
