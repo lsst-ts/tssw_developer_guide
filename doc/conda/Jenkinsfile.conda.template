@@ -74,6 +74,9 @@ pipeline {
         stage("Push Conda Release package") {
             when {
                 buildingTag()
+                not {
+                    tag pattern: "^v\\d\\.\\d\\.\\d-rc\\.\\d\$", comparator: "REGEXP"
+                }
             }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'CondaForge', passwordVariable: 'anaconda_pass', usernameVariable: 'anaconda_user')]) {
@@ -82,6 +85,23 @@ pipeline {
                         source /home/saluser/miniconda3/bin/activate
                         anaconda login --user ${anaconda_user} --password ${anaconda_pass}
                         anaconda upload -u lsstts --force /home/saluser/miniconda3/conda-bld/linux-64/ts-${package_name}*.tar.bz2
+                        """
+                    }
+                }
+            }
+        }
+        stage("Push Conda Release Canidate package") {
+            when {
+                buildingTag()
+                tag pattern: "^v\\d\\.\\d\\.\\d-rc\\.\\d\$", comparator: "REGEXP"
+            }
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'CondaForge', passwordVariable: 'anaconda_pass', usernameVariable: 'anaconda_user')]) {
+                    withEnv(["HOME=${env.WORKSPACE}"]) {
+                        sh """
+                        source /home/saluser/miniconda3/bin/activate
+                        anaconda login --user ${anaconda_user} --password ${anaconda_pass}
+                        anaconda upload -u lsstts --label rc --force /home/saluser/miniconda3/conda-bld/linux-64/ts-${package_name}*.tar.bz2
                         """
                     }
                 }

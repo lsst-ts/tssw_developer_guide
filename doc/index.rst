@@ -22,6 +22,7 @@ Pages
   docker/index
   deployment/index
   language/index
+  development/index
 
 Additional Resources
 ====================
@@ -30,7 +31,7 @@ Additional Resources
 
 `Gitflow Workflow <https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow>`_
 
-.. image:: JiraWorkflow.png
+.. image:: /images/JiraWorkflow.png
 
 
 Related Sites
