@@ -49,10 +49,23 @@ Adding the Job
 
 Add the job by creating a new item on the Jenkins server.
 In ``Branch Sources`` click the github source selection and type in the path of the repo into the ``Respository HTTPS URL``.
+
+.. image:: /images/jenkins-conda-adding-the-job-1.png
+
 Then in the behaviors subsection click the ``add`` button and find the ``Custom GitHub Notification Context`` behavior.
+
+.. image:: /images/jenkins-conda-adding-the-job-2.png
+
 Check the ``Apply Suffix`` box and in the label field add ``/conda`` to the end of the value.
 
 Then in ``Build strategies`` click the ``add`` button and find the ``Tags`` strategies and leave the default values.
+
+.. image:: /images/jenkins-conda-adding-the-job-3.png
+
+Then in ``Build Configuration`` add ``.conda`` to the ``Script Path`` field.
+
+.. image:: /images/jenkins-conda-adding-the-job-4.png
+
 Then click ``Apply`` and ``Save``.
 
 

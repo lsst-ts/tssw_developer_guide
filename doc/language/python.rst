@@ -11,7 +11,7 @@ Python
 Style
 =====
 
-We use Pep-8 except for the following exceptions outlined in the ``setup.cfg`` found below.
+We use PEP-8 except for the following exceptions outlined in the ``setup.cfg`` found below.
 
 PEP-8
 -----
@@ -19,7 +19,7 @@ PEP-8
 `PEP-8 <https://www.python.org/dev/peps/pep-0008/>`_
 
 * `flake8 <https://flake8.pycqa.org/en/latest/>`_
-* `black <https://black.readthedocs.io/en/stable/>`_
+* `black v19.10b <https://black.readthedocs.io/en/stable/>`_
 
 This is the current ``setup.cfg`` file
 
