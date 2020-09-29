@@ -91,7 +91,7 @@ pipeline {
                 }
             }
         }
-        stage("Push Conda Release Canidate package") {
+        stage("Push Conda Release Candidate package") {
             when {
                 buildingTag()
                 tag pattern: "^v\\d\\.\\d\\.\\d-rc\\.\\d\$", comparator: "REGEXP"
