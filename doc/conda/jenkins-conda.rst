@@ -1,12 +1,16 @@
-=================
+#################
 Conda Jenkinsfile
-=================
+#################
 
 The purpose of this document is to make a how-to for having a conda package build on CI.
 This document includes templates for accomplishing this goal.
 The first step is to create a conda recipe for a CSC.
 The :doc:`conda development guide <conda>` will be helpful.
 A template for doing so has been included on this page.
+
+
+Creating the Recipe
+===================
 
 Create a ``conda`` folder inside the root directory CSC repository.
 Then touch a :file:`meta.yaml` file inside of the ``conda`` folder.
@@ -28,6 +32,9 @@ Then run the following inside of the container.
     cd path/to/conda/recipe
     conda-build --prefix-length 100 .
 
+Creating the Jenkinsfile
+========================
+
 Once that is passing, move onto creating the Jenkinsfile.
 
 The next step is to create ``Jenkinsfile.conda`` file.
@@ -36,3 +43,31 @@ Replace ``csc_name`` with the name of the package/csc.
 Replace ``csc_config_repo`` with one of the configuration repos.
 
 .. literalinclude:: Jenkinsfile.conda.template
+
+Adding the Job
+==============
+
+Add the job by creating a new item on the Jenkins server.
+In ``Branch Sources`` click the github source selection and type in the path of the repo into the ``Respository HTTPS URL``.
+
+.. image:: /images/jenkins-conda-adding-the-job-1.png
+
+Then in the behaviors subsection click the ``add`` button and find the ``Custom GitHub Notification Context`` behavior.
+
+.. image:: /images/jenkins-conda-adding-the-job-2.png
+
+Check the ``Apply Suffix`` box and in the label field add ``/conda`` to the end of the value.
+
+Then in ``Build strategies`` click the ``add`` button and find the ``Tags`` strategies and leave the default values.
+
+.. image:: /images/jenkins-conda-adding-the-job-3.png
+
+Then in ``Build Configuration`` add ``.conda`` to the ``Script Path`` field.
+
+.. image:: /images/jenkins-conda-adding-the-job-4.png
+
+Then click ``Apply`` and ``Save``.
+
+
+.. warning::
+    If your job has a build strategy for regular branches, remove it as these jobs are not yet ready to be run on PR or branches.

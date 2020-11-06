@@ -3,6 +3,7 @@ pipeline {
         docker {
             image 'lsstts/conda_package_builder:latest'
             alwaysPull 'true'
+            label 'CSC_Conda_Node'
             args "--env {csc_config_repo}_DIR=/home/saluser/{csc_config_repo} --env LSST_DDS_DOMAIN=citest -u root --entrypoint=''"
             // csc_config_repo should be changed to the CSC's configuration repo name i.e. ts_config_attcs for the athexapod.
             // These could be changed to environment variables but that has not been tested yet, so does not make it into the form of the template.
@@ -74,6 +75,9 @@ pipeline {
         stage("Push Conda Release package") {
             when {
                 buildingTag()
+                not {
+                    tag pattern: "^v\\d\\.\\d\\.\\d-rc\\.\\d\$", comparator: "REGEXP"
+                }
             }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'CondaForge', passwordVariable: 'anaconda_pass', usernameVariable: 'anaconda_user')]) {
@@ -87,12 +91,39 @@ pipeline {
                 }
             }
         }
+        stage("Push Conda Release Candidate package") {
+            when {
+                buildingTag()
+                tag pattern: "^v\\d\\.\\d\\.\\d-rc\\.\\d\$", comparator: "REGEXP"
+            }
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'CondaForge', passwordVariable: 'anaconda_pass', usernameVariable: 'anaconda_user')]) {
+                    withEnv(["HOME=${env.WORKSPACE}"]) {
+                        sh """
+                        source /home/saluser/miniconda3/bin/activate
+                        anaconda login --user ${anaconda_user} --password ${anaconda_pass}
+                        anaconda upload -u lsstts --label rc --force /home/saluser/miniconda3/conda-bld/linux-64/ts-${package_name}*.tar.bz2
+                        """
+                    }
+                }
+            }
+        }
     }
     post {
         always {
             withEnv(["HOME=${env.WORKSPACE}"]) {
                 sh 'chown -R 1003:1003 ${HOME}/'
             }
+        }
+        regression {
+            emailext body: 'Check console output at $BUILD_URL to view the results. \n\n ${CHANGES} \n\n -------------------------------------------------- \n${BUILD_LOG, maxLines=100, escapeHtml=false}', 
+                    to: "${EMAIL_TO}", 
+                    subject: 'Build failed in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER'
+        }
+        fixed {
+            emailext body: 'Check console output at $BUILD_URL to view the results. \n\n ${CHANGES} \n', 
+                    to: "${EMAIL_TO}", 
+                    subject: 'Build Fixed in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER'
         }
         cleanup {
             deleteDir()
