@@ -1,6 +1,6 @@
-####################
-Software Permissions
-####################
+#####################
+Software Installation
+#####################
 
 This page outlines the file-system metadata for software produced for the Rubin Observatory by the Telescope and Site Software team.
 This documents the results from :jira:`RFC-735`.
