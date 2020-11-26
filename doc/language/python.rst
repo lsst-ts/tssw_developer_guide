@@ -39,31 +39,25 @@ This is the current ``setup.cfg`` file
    tests/.tests
 
    [tool:pytest]
-   addopts = --flake8
+   addopts = --flake8 --black
    flake8-ignore = E133 E203 E226 E228 N802 N803 N806 N812 N813 N815 N816 W503
 
    [metadata]
    version = attr: setuptools_scm.get_version
 
-For setting up ``black`` use the following pre-commit hook.
-Touch ``.githooks/pre-commit``
+For setting up ``black``, we use `pre-commit <https://pre-commit.com>`_.
+In the repository, touch ``.pre-commit-config.yaml``
 
-.. code-block:: bash
-   :caption: pre-commit
+.. code::
 
-   #!/bin/sh
-   git stash -q --keep-index
-   black . --check
-   RESULT=$?
-   if [ $RESULT != 0 ]; then
-      echo "Commit rejected. Reformat your code with \"black .\""
-   fi
-   git stash pop -q
-   exit $RESULT
+   repos:
+   - repo: https://github.com/psf/black
+      rev: 19.10b0
+      hooks:
+         - id: black
 
-.. prompt:: bash
-
-   chmod +x .githooks/pre-commit # only run once and then will be saved as executable by git.
+Then run ``pre-commit install``.
+The hook will then run as part of the ``git commit`` command.
 
 
 Docstring
