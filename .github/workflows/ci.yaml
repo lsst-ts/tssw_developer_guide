@@ -1,0 +1,31 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  docs:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools
+          pip install -r requirements.txt
+          pip install ltd-conveyor
+      - name: Build documentation
+        run: package-docs -d doc build
+
+      - name: Upload to LSST the Docs
+        if: ${{ github.event_name == 'push' }}
+        env:
+          LTD_USERNAME: ${{ secrets.LTD_USERNAME }}
+          LTD_PASSWORD: ${{ secrets.LTD_PASSWORD }}
+        run: ltd upload --product tssw-developer --gh --dir doc/_build/html
