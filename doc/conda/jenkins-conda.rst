@@ -39,8 +39,11 @@ Once that is passing, move onto creating the Jenkinsfile.
 
 The next step is to create ``Jenkinsfile.conda`` file.
 A template has been included below.
-Replace ``csc_name`` with the name of the package/csc.
-Replace ``csc_config_repo`` with one of the configuration repos.
+It takes three arguments
+
+* configuration_repo - A list of configuration repos, can be none, one or many
+* package_name - The name of the package.
+* package_namespace - This is the namespace location for the package, for the coverage extension
 
 .. literalinclude:: Jenkinsfile.conda.template
 
