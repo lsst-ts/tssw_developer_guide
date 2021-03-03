@@ -22,7 +22,14 @@ Also to find the configuration repo, look for the :meth:`get_config_pkg` in the 
 .. literalinclude:: meta.yaml.template
     :language: yaml+jinja
 
-Locally test the recipe by running the following command ``docker run -e {config_repo}=/path/to/config/repo -v /path/to/your/repos:/home/saluser/develop -it lsstts/conda_package_builder``
+Locally test the recipe by running the following command
+
+.. prompt:: bash
+
+    docker run -e {config_repo}=/path/to/config/repo \\
+        -v /path/to/your/repos:/home/saluser/develop \\
+        -it lsstts/conda_package_builder
+
 Then run the following inside of the container.
 
 .. prompt:: bash
@@ -30,7 +37,7 @@ Then run the following inside of the container.
     source ~/miniconda3/bin/activate
     source $OSPL_HOME/release.com
     cd path/to/conda/recipe
-    conda-build --prefix-length 100 .
+    conda build --variants "{salobj_version: '', idl_version: ''}' --prefix-length 100 .
 
 Creating the Jenkinsfile
 ========================
