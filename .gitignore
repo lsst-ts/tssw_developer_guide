@@ -125,5 +125,6 @@ dmypy.json
 
 #ide
 .vscode
+.idea
 
 © 2019 GitHub, Inc.
