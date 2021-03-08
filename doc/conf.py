@@ -1,8 +1,9 @@
-from documenteer.sphinxconfig.stackconf import build_package_configs
+from documenteer.conf.pipelinespkg import *
 
-_g=globals()
-_g.update(build_package_configs(
-    project_name='TSSW Developer Guide',version="current"))
+project = "TSSW Developer Guide"
+html_theme_options["logotext"] = project
+html_title = project
+html_short_title = project
 
 extensions.append('sphinx.ext.autosectionlabel')
 autosectionlabel_prefix_document=True

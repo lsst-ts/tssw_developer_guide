@@ -274,7 +274,7 @@ Now create a subdirectory called conda.
 This directory is where the recipe will go.
 Create a meta.yaml file within this directory.
 
-.. code:: yaml
+.. code::
 
     { % set data=load_setup_py_data() % }
 
