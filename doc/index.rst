@@ -159,14 +159,15 @@ Please refer to the TSSW JIRA Workflow diagram above.
 Versioning
 ==========
 
-* Version format:
+Tagging a version has the following rules:
 
-  * "vX.Y.Z", where
-  
-    * v, for Version and is in lower case
-    * X major release
-    * Y minor release
-    * Z point or hotfix release
+  * ticket branches can be tagged with ``vX.Y.Z.alpha.N`` or ``vX.Y.Z.beta.N`` tags
+  * The develop branch can be tagged with ``vX.Y.Z.rc.N``
+    If your code is using ts_xml develop branch then the CSC release must be tagged here.
+  * Master branch is reserved for main tags: ``vX.Y.Z``
+    Any releases tagged from here must be compatible with the current released version of ts_xml.
+
+Where X, Y and Z are major, minor and point/hotfix respectively.
 
   * Proposed definitions for Major, Minor and Point/Hotfix: https://semver.org/
 
