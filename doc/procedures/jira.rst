@@ -2,6 +2,10 @@
 TSSW Jira
 #########
 
+Changes
+=======
+* *Removed section on standbot as that was discontinued - April 30, 2021*
+
 Stand Up Etiquette
 ==================
 
@@ -26,14 +30,6 @@ Stand Up Etiquette
 
 * Save detailed information for Parking Lot time
 * After everyone has given status, the Scrum master will ask if anyone wants any parking lot.
-
-Standbot
---------
-
-Standbot is a slack bot that allows for status to be given by answering a series of questions.
-Every Monday-Friday of a sprint week, at 9AM Tucson time, standbot will ask for a developer's status.
-Once every developer, except for ones that are skipped, answers with status.
-Standbot will post status to the slack channel where someone will post the resulting pdf to a `confluence page <https://confluence.lsstcorp.org/display/LTS/Stand-up>`_.
 
 Parking Lot Etiquette
 =====================
