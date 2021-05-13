@@ -304,6 +304,13 @@ Where X, Y and Z are major, minor and point/hotfix respectively.
 
   * The Annotation is a meaningful text description of the release
 
+To merge and tag a release:
+  ``git checkout master``
+  ``git merge --no-ff develop``
+  ``git tag -a vX.Y.Z -m "Some message about the release."``
+  ``git push``
+  ``git push origin --tags``
+
 Building Applications
 =====================
 
