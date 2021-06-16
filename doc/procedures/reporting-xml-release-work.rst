@@ -27,7 +27,7 @@ Now one can see the tickets that are assigned to this release.
 .. image:: /images/Issues_in_Version.png
 
 Now one can determine if a CAP ticket is available to link work tickets into or one needs to be created before linking work tickets.
-If you see a potential CAP to use for linking, make sure you read the description and ask questions of the reporter if r necessary to determine if it's the right place for your work.
+If you see a potential CAP to use for linking, make sure you read the description and ask questions of the reporter if necessary to determine if it's the right place for your work.
 Just sticking tickets in random locations is not acceptable.
 If there is no description on the ticket, please publicly shame the reporter on the #se-software-interact Slack channel to have one written. Make sure to reference the offending ticket.
 
