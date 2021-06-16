@@ -27,7 +27,7 @@ Now one can see the tickets that are assigned to this release.
 .. image:: /images/Issues_in_Version.png
 
 Now one can determine if a CAP ticket is available to link work tickets into or one needs to be created before linking work tickets.
-If you see a potential CAP to use for linking, make sure you read the description and ask questions of the reporter if r necessary to determine if it's the right place for your work.
+If you see a potential CAP to use for linking, make sure you read the description and ask questions of the reporter if necessary to determine if it's the right place for your work.
 Just sticking tickets in random locations is not acceptable.
 If there is no description on the ticket, please publicly shame the reporter on the #se-software-interact Slack channel to have one written. Make sure to reference the offending ticket.
 
@@ -54,6 +54,14 @@ If a ticket already has an "Issue Links" section, you can use the "+" to add a n
 .. image:: /images/Existing_Issue_Links.png
 
 Please use the "relates to" link qualifier unless you understand what the other ones mean.
+
+Closing Tickets
+===============
+
+In order for a release to proceed, all tickets associated with that release must be closed.
+While the policy for closing tickets varies depending on the ticket in question, the need has arisen for the case where a linked ticket (usually a DM ticket) must stay open beyond the XML work.
+If a ticket falls into this category, the label *xmldone* must be added to the ticket once the XML work is completed and merged.
+This will indicate to the release manager that the necessary work is complete for the release.
 
 Source
 ======
