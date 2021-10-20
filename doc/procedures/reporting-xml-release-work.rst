@@ -54,6 +54,9 @@ If a ticket already has an "Issue Links" section, you can use the "+" to add a n
 .. image:: /images/Existing_Issue_Links.png
 
 Please use the "relates to" link qualifier unless you understand what the other ones mean.
+You can use the "is triggered" link qualifier to track downstream work.
+A ticket with this link qualifier will be ignored in the work completion assessment.
+
 
 Closing Tickets
 ===============
