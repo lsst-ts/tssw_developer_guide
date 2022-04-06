@@ -28,7 +28,7 @@ Locally test the recipe by running the following command
 
     docker run -e {config_repo}=/path/to/config/repo \\
         -v /path/to/your/repos:/home/saluser/develop \\
-        -it lsstts/conda_package_builder
+        -it ts-dockerhub.lsst.org/conda_package_builder
 
 Then run the following inside of the container.
 
@@ -37,7 +37,7 @@ Then run the following inside of the container.
     source ~/miniconda3/bin/activate
     source $OSPL_HOME/release.com
     cd path/to/conda/recipe
-    conda build --variants "{salobj_version: '', idl_version: ''}' --prefix-length 100 .
+    conda build --variants "{salobj_version: '', idl_version: ''}" --prefix-length 100 .
 
 Creating the Jenkinsfile
 ========================
@@ -48,7 +48,7 @@ The next step is to create ``Jenkinsfile.conda`` file.
 A template has been included below.
 It takes three arguments
 
-* configuration_repo - A list of configuration repos, can be none, one or many
+* configuration_repo - A list of configuration repos, can be empty, one or many
 * package_name - The name of the package.
 * package_namespace - This is the namespace location for the package, for the coverage extension
 
@@ -57,7 +57,10 @@ It takes three arguments
 Adding the Job
 ==============
 
-Add the job by creating a new item on the Jenkins server.
+Add the job by creating a new item on the Jenkins server and selecting Multibranch Pipeline.
+
+.. image:: /images/jenkins-conda-adding-the-job-0.png
+
 In ``Branch Sources`` click the github source selection and type in the path of the repo into the ``Respository HTTPS URL``.
 
 .. image:: /images/jenkins-conda-adding-the-job-1.png
