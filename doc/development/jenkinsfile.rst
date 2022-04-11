@@ -2,12 +2,12 @@
 Jenkinsfile
 ###########
 
-Make a Jenkinsfile using the template below.
-Change ``csc_name`` to the name of your CSC.
+* Make a Jenkinsfile using the template below.
 
 .. literalinclude:: Jenkinsfile.template
 
-Then push your changes and the Jenkins CI is set to periodically scan for ``Jenkinsfile`` entries in the lsst-ts GitHub organization.
-You can also click the ``Scan Organization Now`` button in the organization job page.
+* Look for FIXUP and make the documented changes.
+* Push your changes.
+* Visit https://tssw-ci.lsst.org/view/LSST_TandS/job/LSST_Telescope-and-Site/ and push the ``Scan Organization Now`` button, or wait for Jenkins to notice the new Jenkinsfile.
 
 .. image:: /images/jenkins-scan-organization-now.png
