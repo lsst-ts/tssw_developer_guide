@@ -1,4 +1,4 @@
-.. TSSW Developer Guide documentation master file, created by
+.. TSSW Developer Guide documentation main file, created by
    sphinx-quickstart on Tue Apr  2 20:55:52 2019.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -107,10 +107,10 @@ Flavor
 Alternatively, you can also use the `template kit tool <https://github.com/lsst/templates>`_ provided by DM.
 Once you have created the repository with its initial commit (either with sqrbot-jr or manually with the template kit), you need to set it up to follow our :ref:`workflow <index:Gitflow Workflow>`.
 
-- First you need to create a ``develop`` branch from ``master`` and push it to the repository.
+- First you need to create a ``develop`` branch from ``main`` and push it to the repository.
 - Open the repository in GitHub and select the "Settings" tab at the top.
 - Go to "Branches"
-- On the "Default branch", click on "switch to another branch" and select develop instead of master.
+- On the "Default branch", click on "switch to another branch" and select develop instead of main.
 - On "Branch protection rules", click on "Add rule".
 - On "Branch name pattern" type "develop".
 - On "Protect matching branches" select;
@@ -154,10 +154,10 @@ In Progress
 -----------
 
 * Create the ticket branch in the git repos
-  The branch should be named ``tickets/DM-12345``, where ``DM-12345 is the ticket number assigned by Jira.
+  The branch should be named ``tickets/DM-12345``, where ``DM-12345`` is the ticket number assigned by Jira.
   Once the ticket is pushed to GitHub it is automatically linked to the JIRA component ticket.
 
-  * No active development is ever done on the Master or Develop branches.
+  * No active development is ever done on the Main or Develop branches.
   
 * Write the code.
 * Write the unit tests.
@@ -215,7 +215,12 @@ Release Process
 Timeframe
 ---------
 
-.. todo:: Update with information about the cycle_build
+Our timeframe for deploying cycle upgrades to the summit is on an approximately bimonthly basis.
+We have a repository called `ts_cycle_build <https://github.com/lsst-ts/ts_cycle_build>`_, which builds the deployable artifacts for each software component.
+The nomenclature for the version of a cycle is determined by a cycle number which is incremented depending on if a core component version is updated (such as ts_sal, ts_xml and etc.) and a revision number which is incremented if any non core component is updated.
+The cycle can be revised at any time post cycle release.
+
+The Cycle Build uses a custom release process as documented on `ts-cycle-build.lsst.io <https://ts-cycle-build.lsst.io>`_.
 
 The timeframe for release will be defined per application, by the Developer(s) and Product Owner(s), and should part of the high-level lsst.io site.
 
@@ -227,63 +232,59 @@ It can be a regularly scheduled duration (quarterly, monthly, weekly, etc) or ba
 For example, after some number of features are complete or simply based on a schedule of milestones.
 Whatever form this takes, it will be defined on the High-level lsst.io site for each application.
 
-Gitflow Workflow
-----------------
+TSSW Git Workflow
+-----------------
 
-See `Gitflow Workflow <https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow>`_ for the detailed description of the workflow and process.
+Our team uses a modified gitflow workflow.
+The main difference is that most of the repositories do not use the Release branch and instead choose to merge to main from develop directly.
+This is because most of our repositories only have one or two developers working on them at a time and releases are usually coordinated so that no one can accidently commit changes to a release.
+Some of our larger repositories such as ts_xml and ts_sal which have a larger number of developers working on them, use the Release branch.
 
-**Master branch**
+See `Gitflow Workflow <https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow>`_ for the detailed description of the standard workflow and process.
 
-* This branch is for Releases **ONLY**.
+Main Branch
+^^^^^^^^^^^
+The main branch is for production ready code only.
+It should contain only merge commits from the development and hotfix branches.
+As it is considered production ready for summit use, this branch should always be stable and deployable.
 
-  * Should only have merge commits and only from Develop and HotFix branches.
-  * NO active development should take place here.
+.. note:: 
+  We need to decide how to implement a cohesive strategy for tagging our code.
+  We have several strategies out in the wild.
 
-* Each release should be :ref:`tagged <index:Versioning>` with the appropriate version.
-* Should always be stable and deployable.
+Release Branch (Optional)
+^^^^^^^^^^^^^^^^^^^^^^^^^
+The release branch is an optional branch in our process.
+It is used by the major components in order to protect from untested code changes being merged to the develop branch unintended for release.
+This is because we have multiple developers working on these components or that changes are foundational to the viablity of the other components that changes need to be verified.
 
-**Release workflow:**
+Develop Branch
+^^^^^^^^^^^^^^
+The develop branch is the trunk that stores the code that is ready for the next release.
+We consider this code to be a release candidate ready as necessary where the CI is passing but not always stable.
 
-* Once Developer team and Product Owners decide the Application is ready for a Release.
-* QA runs tests on the master branch.
+Ticket Branch
+^^^^^^^^^^^^^
+Ticket branches are where main development efforts are done.
+They are branched from the develop branch.
+They are merged upon successful CI build and an approving review.
 
-  * if Issues found:
+HotFix Branch
+^^^^^^^^^^^^^
+HotFix branches are branched from main when a critical bug is discovered during production use.
 
-    * team decides if the fix is necessary or not.
 
-    * once the Product Owner, Developers and QA feel the Application is ready for release:
 
-      * Developer cuts the Release by merging to Master and creating the version tag.
-        When merging develop to master we recommend using ``--no-ff``, which disables "fast forwarding".
-        This will create a new commit in the master branch with all the changes in develop.
-      * QA does another set of testing, after the merge, on the Release artifact.
+Release workflow
+^^^^^^^^^^^^^^^^
+Package releases start by tagging a release using an annotated git tag as described in :ref:`index:versioning`.
+Packages are then built using the Continuous Integration process.
+For our python CSCs, we use a conda package mechanism with SAL libraries in RPM packages.
+For non Python based CSCs, we have different package mechanisms.
 
-**Develop branch**
+Once the packages are tagged and built, the version numbers are updated on the Cycle Build which leads to the docker deployment images being built and pushed to our Nexus docker registry.
+The images are then passed to ArgoCD which deploys the images to the summit kubernetes cluster.
 
-  * This is the main trunk for the code.
-  * The develop branch is the default branch for any software repository.
-    * The only exception is documentation repos where master/main is the default.
-
-  * The branch is protected and only PRs approved by a reviewer are allowed to be merged and if applicable passing CI from the PR build
-    * Private repositories are exempted because we use GitHub's free tier which does not offer branch protections for private repos.
-  * Should only have merge commits, from Feature branches.
-  * NO active development should take place here.
-
-**Ticket branch**
-
-* Branched from develop.
-* Where active development occurs
-* When work is complete, merge to develop.
-
-  * All requirements are met.
-  * Unit tests are complete and passing.
-  * pull request approved, can then merge to develop
-
-**HotFix branch**
-
-* Branched from Master.
-* Only for necessary, emergency fixes to already released version.
-* Merged to Master and Develop when complete.
 
 Versioning
 ==========
@@ -293,14 +294,14 @@ Tagging a version has the following rules:
   * ticket branches can be tagged with ``vX.Y.Z.alpha.N`` or ``vX.Y.Z.beta.N`` tags
   * The develop branch can be tagged with ``vX.Y.Z.rc.N``
     If your code is using ts_xml develop branch then the CSC release must be tagged here.
-  * Master branch is reserved for main tags: ``vX.Y.Z``
+  * Main branch is reserved for main tags: ``vX.Y.Z``
     Any releases tagged from here must be compatible with the current released version of ts_xml.
 
 Where X, Y and Z are major, minor and point/hotfix respectively.
 
   * Proposed definitions for Major, Minor and Point/Hotfix: https://semver.org/
 
-* Use `Annotated tags <https://git-scm.com/book/en/v2/Git-Basics-Tagging>`_ on the master branch
+* Use `Annotated tags <https://git-scm.com/book/en/v2/Git-Basics-Tagging>`_ on the main branch
 
   * The Annotation is a meaningful text description of the release
 
@@ -360,7 +361,7 @@ Each Component should have the following roles occupied
   SW Manager 
     Personnel who can decide resolution, if there is conflict with the four roles above.
 
-The Component has most of this information defined in the Master CSC table on `ts_xml <https://ts-xml.lsst.io>`_.
+The Component has most of this information defined in the Main CSC table on `ts_xml <https://ts-xml.lsst.io>`_.
 
 
 Sources
