@@ -4,3 +4,9 @@ copyright = "2023 Association of Universities for Research in Astronomy, Inc. (A
 base_url = "https://tssw-developer.lsst.io"
 github_url = "https://github.com/lsst-ts/tssw_developer_guide"
 version = ""
+
+[sphinx]
+extensions = ["sphinx.ext.autosectionlabel"]
+
+[sphinx.intersphinx.projects]
+dm_developer_guide = "https://developer.lsst.io"

@@ -2,9 +2,6 @@
 Reporting Work for XML Release
 ##############################
 
-.. contents::
-    :local:
-
 Current Release Tickets
 =======================
 The individual XML releases are defined as release artifacts on the Releases page from the `CAP <https://jira.lsstcorp.org/projects/CAP>`_ project page.
@@ -65,7 +62,3 @@ In order for a release to proceed, all tickets associated with that release must
 While the policy for closing tickets varies depending on the ticket in question, the need has arisen for the case where a linked ticket (usually a DM ticket) must stay open beyond the XML work.
 If a ticket falls into this category, the label *xmldone* must be added to the ticket once the XML work is completed and merged.
 This will indicate to the release manager that the necessary work is complete for the release.
-
-Source
-======
-https://confluence.lsstcorp.org/display/LSSTCOM/Work+Reporting+for+XML+Releases

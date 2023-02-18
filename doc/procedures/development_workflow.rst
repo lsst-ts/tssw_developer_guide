@@ -1,7 +1,9 @@
 Development Workflow
 ====================
 
-The Sprint in which these tasks are placed is defined :ref:`here <procedures/jira:Sprints>`.
+The Sprint in which these tasks are placed is defined :ref:`here </procedures/jira:Sprints>`.
+
+.. image:: /images/JiraWorkflow.png
 
 Please refer to the TSSW JIRA Workflow diagram above.
 

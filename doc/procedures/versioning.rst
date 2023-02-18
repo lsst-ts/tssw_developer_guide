@@ -17,3 +17,47 @@ Where X, Y and Z are major, minor and point/hotfix respectively.
 * Use `Annotated tags <https://git-scm.com/book/en/v2/Git-Basics-Tagging>`_ on the main branch
 
   * The Annotation is a meaningful text description of the release
+
+.. tab-set::
+
+  .. tab-item:: Tag alpha
+
+    Tag alpha on ticket branches.
+    This is for developing new features or bug fixes for deploying in environments.
+
+    .. prompt:: bash
+
+      git tag vX.Y.Z.a.N
+      git push origin vX.Y.Z.a.N
+
+  .. tab-item:: Tag beta
+
+    Tag beta on ticket branches.
+    This is meant for new features or bug fixes that have finished development but are still not quite finished.
+
+    .. prompt:: bash
+
+      git tag vX.Y.Z.b.N
+      git push origin vX.Y.Z.b.N
+
+  .. tab-item:: Tag release canididate
+
+    Tag release candidates on develop branch.
+    This is for software that has new XML that has not been released or for bigger changes that require further testing.
+    This branch is considered to be always ready to deploy which means passing unit tests.
+
+    .. prompt:: bash
+
+      git tag vX.Y.Z.rc.N
+      git push origin vX.Y.Z.rc.N
+
+  .. tab-item:: Tag release
+
+    Tag releases on main branch.
+    This is for software that's ready to be deployed on production.
+
+    .. prompt:: bash
+
+      git tag -a vX.Y.Z
+      git push origin vX.Y.Z
+

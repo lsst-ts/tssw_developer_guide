@@ -5,7 +5,7 @@ Conda Jenkinsfile
 The purpose of this document is to make a how-to for having a conda package build on CI.
 This document includes templates for accomplishing this goal.
 The first step is to create a conda recipe for a CSC.
-The :doc:`conda development guide <conda>` will be helpful.
+The :doc:`conda development guide </conda/conda>` will be helpful.
 A template for doing so has been included on this page.
 
 
@@ -19,8 +19,9 @@ Another thing is to change requirements so that they match the CSC's.
 Keep in mind that the test requirements need to include test framework dependencies.
 Also to find the configuration repo, look for the :meth:`get_config_pkg` in the CSC class.
 
-.. literalinclude:: meta.yaml.template
+.. literalinclude:: /conda/meta.yaml.template
     :language: yaml+jinja
+    :caption: meta.yaml
 
 Locally test the recipe by running the following command
 
@@ -48,11 +49,12 @@ The next step is to create ``Jenkinsfile.conda`` file.
 A template has been included below.
 It takes three arguments
 
-* configuration_repo - A list of configuration repos, can be empty, one or many
-* package_name - The name of the package.
-* package_namespace - This is the namespace location for the package, for the coverage extension
+:configuration_repo: A list of configuration repos, can be empty, one or many.
+:package_name: The name of the package.
+:package_namespace: This is the namespace location for the package, for the coverage extension.
 
-.. literalinclude:: Jenkinsfile.conda.template
+.. literalinclude:: /conda/Jenkinsfile.conda.template
+    :caption: Jenkinsfile.conda
 
 Adding the Job
 ==============

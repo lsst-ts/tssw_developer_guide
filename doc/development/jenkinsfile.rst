@@ -4,7 +4,7 @@ Jenkinsfile
 
 * Make a Jenkinsfile using the template below.
 
-.. literalinclude:: Jenkinsfile.template
+.. literalinclude:: /development/Jenkinsfile.template
 
 This uses the Jenkins shared library with the following parameters
 
