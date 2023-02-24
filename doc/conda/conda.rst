@@ -1,9 +1,3 @@
-:tocdepth: 1
-
-.. Please do not modify tocdepth; will be fixed when a new Sphinx theme is shipped.
-
-.. TODO: Delete the note below before merging new content to the master branch.
-
 =====================
 Conda Developer Guide
 =====================
@@ -362,86 +356,6 @@ To upload a package, invoke the following in your terminal
     anaconda upload -c lsstts {location_of_conda_package} #again found on the last line of a successful conda build
 
 Upon success, your package will now be uploaded to the channel for distribution purposes.
-
-Once you have a successful build, you can start writing a CI file to build the conda package as a release tag.
-ts_ATMCS-simulator has a good working example for this.
-Create a file called Jenkinsfile in the root directory of your CSC.
-
-.. code::
-
-  pipeline {
-    agent any
-    environment {
-        package_name = "atmcs-simulator"
-        package_version = sh(returnStdout: true, script: "git describe --tags --always --dirty").trim()
-        dockerImageName = "lsstts/conda_package_builder:latest"
-        container_name = "salobj_${BUILD_ID}_${JENKINS_NODE_COOKIE}"
-    }
-
-    stages {
-        stage("Pull Docker Image") {
-            steps {
-                script {
-                sh """
-                docker pull ${dockerImageName}
-                """
-                }
-            }
-        }
-        stage("Start builder"){
-            steps {
-                script {
-                    sh """
-                    docker run --name ${container_name} -di --rm \
-                        --env TS_CONFIG_ATTCS_DIR=/home/saluser/ts_config_attcs \
-                        --env LSST_DDS_DOMAIN=citest \
-                        -v ${WORKSPACE}:/home/saluser/source ${dockerImageName}
-                    """
-                }
-            }
-        }
-        stage("Clone ts_config_attcs"){
-            steps {
-                script {
-                    sh """
-                    docker exec ${container_name} sh -c "git clone https://github.com/lsst-ts/ts_config_attcs.git"
-                    """
-                }
-            }
-        }
-        stage("Create ATMCS Simulator Conda package") {
-            steps {
-                script {
-                    sh """
-                    docker exec ${container_name} sh -c 'cd ~/source/conda && source ~/miniconda3/bin/activate && source "\$OSPL_HOME/release.com" && conda build --prefix-length 100 .'
-                    """
-                }
-            }
-        }
-        stage("Push ATMCS Simulator package") {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'CondaForge', passwordVariable: 'anaconda_pass', usernameVariable: 'anaconda_user')]) {
-                    script {
-                        sh """
-                        docker exec ${container_name} sh -c "source ~/miniconda3/bin/activate && \
-                            anaconda login --user ${anaconda_user} --password ${anaconda_pass} && \
-                            anaconda upload -u lsstts --force \
-                            ~/miniconda3/conda-bld/linux-64/ts-${package_name}*.tar.bz2"
-                        """
-                    }
-                }
-            }
-        }
-    }
-    post {
-        cleanup {
-            sh """
-            docker stop ${container_name}
-            """
-        }
-    }
-  }
-
 
 Q and A
 =======

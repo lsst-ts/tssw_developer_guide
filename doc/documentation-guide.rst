@@ -29,21 +29,4 @@ Inside of the files, there are comments that explain how to fill out each sectio
 Publishing lsst.io Site
 =======================
 
-Assuming that a :file:`Jenkinsfile` exists.
-Add the following stage to it.
-
-.. code::
-
-    stage('Build and Upload Documentation') {
-        steps {
-            withEnv(["HOME=${env.WORKSPACE}"]) {
-                sh """
-                source /home/saluser/.setup_dev.sh
-                pip install .
-                pip install -r doc/requirements.txt
-                package-docs build
-                ltd upload --product [ts-name] --git-ref ${GIT_BRANCH} --dir doc/_build/html
-                """
-            }
-        }
-    }
+This functionality is included in the DevelopPipeline for the Jenkins Shared Library.

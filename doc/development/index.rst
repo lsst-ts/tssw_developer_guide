@@ -1,11 +1,20 @@
-##################
-Development Guides
-##################
+###############
+Developer Guide
+###############
 
-Guides on software development.
+Guide on software development.
 
-.. toctree::
-    :glob:
-    :maxdepth: 1
+.. .. toctree::
+..     :hidden:
+..     :glob:
+..     :maxdepth: 1
 
-    *
+..     *
+
+.. include:: building.rst
+
+.. include:: components.rst
+
+.. include:: jenkinsfile.rst
+
+.. include:: unit_testing.rst
