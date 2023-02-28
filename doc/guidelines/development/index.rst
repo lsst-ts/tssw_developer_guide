@@ -4,12 +4,12 @@ Developer Guide
 
 Guide on software development.
 
-.. .. toctree::
-..     :hidden:
-..     :glob:
-..     :maxdepth: 1
+.. toctree::
+    :glob:
+    :maxdepth: 1
+    :hidden:
 
-..     *
+    docker/index
 
 .. include:: building.rst
 

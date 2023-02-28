@@ -41,11 +41,11 @@ Go to the bottom of the left hand panel and find the "App" section.
 Click on the "+" sign, search for sqrbot-jr and start a chat with it.
 Send a message with "create project" to the bot and slack and follow the prompts to have the repository automatically created and setup for you.
 
-.. image:: ../images/sqrbot-jr-1.png
+.. image:: /images/sqrbot-jr-1.png
 
 Then pick the template ``LSST EUPs Package``
 
-.. image:: ../images/sqrbot-jr-2.png
+.. image:: /images/sqrbot-jr-2.png
 
 Fill out the following fields:
 
@@ -61,7 +61,7 @@ Copyright
 Flavor
   Choose ``DDS Python``
 
-.. image:: ../images/sqrbot-jr-3.png
+.. image:: /images/sqrbot-jr-3.png
 
 Alternatively, you can also use the `template kit tool <https://github.com/lsst/templates>`_ provided by DM.
 Once you have created the repository with its initial commit (either with sqrbot-jr or manually with the template kit), you need to set it up to follow our :ref:`workflow <procedures/releases:TSSW Git Workflow>`.
@@ -90,7 +90,7 @@ Each Component should have the following roles occupied
     customer or user base for component
 
   Product Owner
-    Product owner definition here: `TSS Product Owner <https://confluence.lsstcorp.org/display/LTS/TSS+Product+Owner>`_
+    Product owner definition here: `TSS Product Owner <https://confluence.lsstcorp.org/display/LTS/TSS+Product+Owner>`__.
 
   Lead Developer
     Main developer for the component
@@ -101,4 +101,4 @@ Each Component should have the following roles occupied
   SW Manager
     Personnel who can decide resolution, if there is conflict with the four roles above.
 
-The Component has most of this information defined in the Main CSC table on `ts_xml <https://ts-xml.lsst.io>`_.
+The Component has most of this information defined in the Main CSC table on `ts_xml <https://ts-xml.lsst.io>`__.

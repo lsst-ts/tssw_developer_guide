@@ -1,17 +1,16 @@
-###########
 Jenkinsfile
-###########
+===========
 
 * Make a Jenkinsfile using the template below.
 
-.. literalinclude:: /development/Jenkinsfile.template
+.. literalinclude:: ./Jenkinsfile.template
 
 This uses the Jenkins shared library with the following parameters
 
 :name: This is the package name of the csc.
 :idl_name: This is the IDL name used to generate the IDL files.
 :module_name: This is the namespace path for the package i.e. lsst.ts.csc.
-:required_idl: This is an array of IDL file names required beyond the CSC's IDL files for building the package.
+:required_idl: This is an array of IDL file names required beyond the CSC IDL files for building the package.
 :build_all_idl: This will build all of the IDL files if true.
 :extra-packages: An array of strings in the form of "organization/repo_name/branch" to clone and build that are not already included in the develop environment image.
 
