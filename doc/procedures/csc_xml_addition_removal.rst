@@ -38,8 +38,3 @@ Before Release Procedure
 ========================
 Before it is time to perform the XML release, the XML Work Coordinator and Build/Release Coordinator must meet to review the release tickets.
 This will ensure that added or removed CSCs will be properly addressed heading into the build process.
-
-Sources
-=======
-
-* Stolen from https://confluence.lsstcorp.org/display/LSSTCOM/Procedure+for+Adding+or+Removing+a+CSC+from+the+XML+Interface+and+Updating+OpenSplice+Version

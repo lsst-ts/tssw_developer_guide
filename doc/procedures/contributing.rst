@@ -11,7 +11,7 @@ It uses `documenteer <https://documenteer.lsst.io>`_ as its build tool chain.
 This guide assumes use of the develop-env container.
 In order to build the documentation locally, use the following command ``package-docs build``.
 If making an improvement or fixing an issue, then file a ticket according to the :doc:`/procedures/jira` procedure.
-Then use the :doc:`documentation guide <documentation-guide>` as a starting point for writing your content.
+Then use the :doc:`documentation guide </guidelines/documentation-guide>` as a starting point for writing your content.
 
 This site is meant for documenting information that is considered pertinent to a Telescope and Site Software Developer.
 This information could also be helpful for those outside of that team as well.
