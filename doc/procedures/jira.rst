@@ -38,6 +38,8 @@ Parking Lot Etiquette
 * Speak with team members that can help with an issue, or are interested in the task
 * Move lengthy conversations to a different room and/or time
 
+.. _Sprints:
+
 Sprints
 =======
 

@@ -10,11 +10,7 @@ Guide on software development.
     :hidden:
 
     docker/index
-
-.. include:: building.rst
-
-.. include:: components.rst
-
-.. include:: jenkinsfile.rst
-
-.. include:: unit_testing.rst
+    building
+    components
+    jenkinsfile
+    unit_testing

@@ -64,7 +64,7 @@ HotFix branches are branched from main when a critical bug is discovered during 
 
 Release workflow
 ^^^^^^^^^^^^^^^^
-Package releases start by tagging a release using an annotated git tag as described in :ref:`/procedures/versioning:Versioning`.
+Package releases start by tagging a release using an annotated git tag as described in :ref:`Versioning`.
 Packages are then built using the Continuous Integration process.
 For our python CSCs, we use a conda package mechanism with SAL libraries in RPM packages.
 For non Python based CSCs, we have different package mechanisms.

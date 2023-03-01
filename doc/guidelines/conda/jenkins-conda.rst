@@ -1,3 +1,5 @@
+.. _Conda-Jenkinsfile:
+
 #################
 Conda Jenkinsfile
 #################
@@ -5,7 +7,7 @@ Conda Jenkinsfile
 The purpose of this document is to make a how-to for having a conda package build on CI.
 This document includes templates for accomplishing this goal.
 The first step is to create a conda recipe for a CSC.
-The :doc:`conda development guide </conda/conda>` will be helpful.
+The :doc:`conda development guide <./conda>` will be helpful.
 A template for doing so has been included on this page.
 
 

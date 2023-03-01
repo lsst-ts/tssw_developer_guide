@@ -1,3 +1,5 @@
+.. _reporting-xml-release-work:
+
 ##############################
 Reporting Work for XML Release
 ##############################
