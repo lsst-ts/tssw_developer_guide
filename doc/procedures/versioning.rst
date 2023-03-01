@@ -42,7 +42,7 @@ Where X, Y and Z are major, minor and point/hotfix respectively.
       git tag vX.Y.Z.b.N
       git push origin vX.Y.Z.b.N
 
-  .. tab-item:: Tag release canididate
+  .. tab-item:: Tag release candidate
 
     Tag release candidates on develop branch.
     This is for software that has new XML that has not been released or for bigger changes that require further testing.
