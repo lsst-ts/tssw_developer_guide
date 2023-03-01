@@ -14,5 +14,3 @@ Telescope and Site Software: Procedures and Guidelines
 
   procedures/index
   guidelines/index
-  contributing
-  additional-resources

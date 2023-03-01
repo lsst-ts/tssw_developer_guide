@@ -8,6 +8,7 @@ Guidelines
     :maxdepth: 1
     :hidden:
 
+    documentation-guide
     development/index
     deployment/index
     conda/index
