@@ -1,3 +1,4 @@
+.. _Guidelines:
 
 ##########
 Guidelines
