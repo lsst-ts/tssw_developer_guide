@@ -22,11 +22,8 @@ This guide assumes a repo created with the Templates project or using the sqr-bo
 .. literalinclude:: setup.cfg.example
    :caption: setup.cfg
 
-.. include:: /conda/jenkins-conda.rst
-
-###########
 Style Guide
-###########
+===========
 
 .. literalinclude:: .pre-commit-config.yaml.example
    :caption: .pre-commit-config.yaml
@@ -45,11 +42,14 @@ The team uses the following tools to enforce the style guide.
 
 This is enforced by a tool called ``pre-commit``.
 
-.. include:: /development/jenkinsfile.rst
+Additional Information
+======================
 
-
-.. include:: /documentation-guide.rst
-
-.. include:: /procedures/versioning.rst
-
-.. include:: /procedures/reporting-xml-release-work.rst
+*  See :ref:`Jenkinsfile` for information on how to setup the CI job for your packages.
+   This job is usually used to test PRs and are triggered by pushes to the github repo.
+*  See :ref:`Conda-Jenkinsfile` for information on how to setup the CI conda job for your packages.
+   This job is used to build conda packages.
+   They are triggered daily by the build system and automatically when tags are pushed to the github repo.
+*  See :ref:`documentation-guide` for information on how to write and publish package documentation.
+*  See :ref:`Versioning` for information on how to version your packages.
+*  See :ref:`reporting-xml-release-work` for information on how to update CSCs interfaces.
