@@ -1,6 +1,31 @@
 Release Process
 ===============
 
+Git Commands
+------------
+
+In most cases (see :ref:`releases-tssw-git-workflow`), releasing a new version of a package consists in merging the develop branch into main and adding a :ref:`release <Versioning>` tag to the main branch.
+
+This can be done in the comand line with the following sequence of commands:
+
+.. prompt:: bash
+
+    git fetch --all
+    git checkout develop
+    git pull 
+    git checkout main
+    git pull 
+    git merge develop --no-ff
+    git push
+    git tag -a vX.Y.Z  -m "Release vX.Y.Z message." # <- Replace X.Y.Z with the release numbers
+    git push --tags
+
+
+When doing a release it is recommended to use annotated tags (the ``-a`` in the ``git add`` command above) and add a release message.
+If you want to include a multiline message you may skip the ``-m`` option which will cause git to open a text editor (``vi`` by default) where you can type the release message.
+
+.. note:: Most packages have a "version history" file in their doc directory and you can copy and paste the message there into the text editor.
+
 Timeframe
 ---------
 
@@ -20,6 +45,8 @@ The timeframe can take many forms.
 It can be a regularly scheduled duration (quarterly, monthly, weekly, etc) or based on some event-based metrics.
 For example, after some number of features are complete or simply based on a schedule of milestones.
 Whatever form this takes, it will be defined on the High-level lsst.io site for each application.
+
+.. _releases-tssw-git-workflow:
 
 TSSW Git Workflow
 -----------------
