@@ -11,7 +11,6 @@ Procedures
 
     jira
     development_workflow
-    releases
     reporting-xml-release-work
     csc_xml_addition_removal
     versioning
