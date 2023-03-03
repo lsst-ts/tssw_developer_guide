@@ -64,7 +64,7 @@ Flavor
 .. image:: /images/sqrbot-jr-3.png
 
 Alternatively, you can also use the `template kit tool <https://github.com/lsst/templates>`_ provided by DM.
-Once you have created the repository with its initial commit (either with sqrbot-jr or manually with the template kit), you need to set it up to follow our :ref:`workflow <procedures/releases:TSSW Git Workflow>`.
+Once you have created the repository with its initial commit (either with sqrbot-jr or manually with the template kit), you need to set it up to follow our :ref:`workflow <development-workflow>`.
 
 - First you need to create a ``develop`` branch from ``main`` and push it to the repository.
 - Open the repository in GitHub and select the "Settings" tab at the top.
