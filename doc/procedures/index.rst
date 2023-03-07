@@ -15,5 +15,6 @@ Procedures
     csc_xml_addition_removal
     versioning
     software
+    pre_commit
     additional-resources
     contributing
