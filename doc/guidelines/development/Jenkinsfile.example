@@ -1,0 +1,2 @@
+@Library('JenkinsShared')_
+DevelopPipeline("ts_ess_csc", "ESS", "lsst.ts.ess.csc", "", required_idl=[], build_all_idl=false, extra_packages=["lsst-ts/ts_ess_common/develop", "lsst-ts/ts_ess_controller/develop"])
