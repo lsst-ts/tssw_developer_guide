@@ -1,2 +1,2 @@
 @Library('JenkinsShared')_
-DevelopPipeline(name: "name", idl_name: "idl_name", module_name: "module_name", pre_commit_flags: "", required_idl: [], build_all_idl: false, extra_packages: [])
+DevelopPipeline(name: "name", module_name: "module_name", pre_commit_flags: "", idl_names: [], build_all_idl: false, extra_packages: [])

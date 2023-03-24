@@ -10,7 +10,6 @@ Jenkinsfile
 This uses the Jenkins shared library with the following parameters
 
 :name: This is the package name of the csc (use an underscore).
-:idl_name: This is the IDL name used to generate the IDL files.
 :module_name: This is the namespace path for the package i.e. lsst.ts.csc.
 :pre_commit_flags: This is for adding flags to generate_pre_commit_conf.
 :required_idl: This is an array of IDL file names required beyond the CSC IDL files for building the package.
