@@ -28,16 +28,13 @@ Style Guide
 .. literalinclude:: .pre-commit-config.yaml.example
    :caption: .pre-commit-config.yaml
 
-.. note::
-   The team is looking into tools to attempt to automate updates and configuration of ``pre-commit``.
-   However the search is not done yet.
-
 The team uses the following tools to enforce the style guide.
 
-:black: An opionated autoformatter.
-:isort: An opionated import sorter.
+:black: An opinionated autoformatter.
+:isort: An opinionated import sorter.
 :flake8: A style checker with many different plugins to enforce different rules.
 :check-yaml: Checks yaml files for proper format.
+:check-xml: Checks xml files for proper format.
 :mypy: Performs type checking on the code (optional).
 
 This is enforced by a tool called ``pre-commit``.
@@ -53,3 +50,4 @@ Additional Information
 *  See :ref:`documentation-guide` for information on how to write and publish package documentation.
 *  See :ref:`Versioning` for information on how to version your packages.
 *  See :ref:`reporting-xml-release-work` for information on how to update CSCs interfaces.
+* See :ref:`pre-commit` for more information on the pre-commit tool.
