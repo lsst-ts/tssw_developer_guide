@@ -11,7 +11,6 @@ This uses the Jenkins shared library with the following parameters
 
 :name: This is the package name of the csc (use an underscore).
 :module_name: This is the namespace path for the package i.e. lsst.ts.csc.
-:pre_commit_flags: This is for adding flags to generate_pre_commit_conf.
 :idl_names: This is an array of IDL file names for building the package.
 :build_all_idl: This will build all of the IDL files if true.
 :extra-packages: An array of strings in the form of "organization/repo_name" to clone and build that are not already included in the develop environment image.
