@@ -7,7 +7,6 @@ Guidelines
 .. toctree::
     :glob:
     :maxdepth: 1
-    :hidden:
 
     documentation-guide
     development/index

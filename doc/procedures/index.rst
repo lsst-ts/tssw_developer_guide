@@ -7,7 +7,6 @@ Procedures
 .. toctree::
     :glob:
     :maxdepth: 1
-    :hidden:
 
     jira
     development_workflow
