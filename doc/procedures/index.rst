@@ -16,5 +16,6 @@ Procedures
     versioning
     software
     pre_commit
+    dockermacm1
     additional-resources
     contributing
