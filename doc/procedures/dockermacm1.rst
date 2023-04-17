@@ -33,7 +33,7 @@ On Mac M1 to avoid a warning add `--platform linux/amd64`.
 Naming the container is useful for logging in and finding it later.
 The '-v' option may be used to mount a local directory into the container - keeping all you checkouts in a folder outside is useful if you want to use an IDE for editing.
 
-So a command to spin up a container i and put you on the command prompt would look like (with output) :
+So a command to spin up a container and put you on the command prompt would look like (with output) :
 
 .. code-block:: sh
     $ docker run --platform linux/amd64 --privileged --name sal --rm  -v ${HOME}/LSSTcode/TSS:/home/saluser/develop -it lsstts/develop-env:develop
@@ -50,3 +50,19 @@ So a command to spin up a container i and put you on the command prompt would lo
 
 
 From there you are ready to conda install or setup up any packages you need. 
+
+Stable containers and other tags
+++++++++++++++++++++++++++++++++
+
+There are many alternatives to the `develop` tag for container - specifically the per cycle container is useful. 
+Cycles are listed `here on confluence <https://confluence.lsstcorp.org/display/LSSTCOM/Software+Upgrades>`.
+
+The `develop-env tags on DockerHub are listed here <https://hub.docker.com/r/lsstts/develop-env/tags>`. 
+Specific cycle containers are labeled `cCCCC.VVV`, where `CCCC` is  the cycle number (e.g. 0029) and `VVV` is version (e.g. 000). 
+So to get specifically c0029,  use:
+
+.. code-block:: sh
+    lsstts/develop-env:c0029.000
+
+
+in the docker run command above. 
