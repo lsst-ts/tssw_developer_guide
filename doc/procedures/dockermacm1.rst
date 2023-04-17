@@ -58,11 +58,11 @@ There are many alternatives to the `develop` tag for container - specifically th
 Cycles are listed `here on confluence <https://confluence.lsstcorp.org/display/LSSTCOM/Software+Upgrades>`.
 
 The `develop-env tags on DockerHub are listed here <https://hub.docker.com/r/lsstts/develop-env/tags>`. 
-Specific cycle containers are labeled `cCCCC.VVV`, where `CCCC` is  the cycle number (e.g. 0029) and `VVV` is version (e.g. 000). 
+Specific cycle containers are labeled `cCCCC.VVV`, where `CCCC` is  the cycle number (e.g. 0028) and `VVV` is version (e.g. 004). 
 So to get specifically c0029,  use:
 
 .. code-block:: sh
-    lsstts/develop-env:c0029.000
+    lsstts/develop-env:c0028.004
 
 
 in the docker run command above. 
