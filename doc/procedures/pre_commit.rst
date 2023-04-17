@@ -47,6 +47,32 @@ An example where all ``pre-commit`` hooks are enabled is:
    isort: true
    mypy: true
 
+
+The ``generate_pre_commit_conf`` command fails with a comprehensive error message if a mandatory or optional ``pre-commit`` hook is missing.
+All ``pre-commit`` hooks except for ``mypy`` are mandatory for TSSW projects, so those hooks need to be set to ``true``.
+Setting one or more of the mandatory hooks to ``false`` will make the ``generate_pre_commit_conf`` command fail with a comprehensive error message.
+
+The configuration files will be updated whenever the pre-commit hooks get updated.
+Apart from that, all generated configuration file names get added to ``.gitignore`` as well.
+The TSSW Jenkins CI jobs update these configuration files and execute pre-commit every time the jobs run, so you know that you need to update them locally and fix your code if a job fails.
+You can update the config file locally by running the ``generate_pre_commit_conf`` command again.
+
+Projects with a ``.ts_pre_commit_config.yaml`` file
+---------------------------------------------------
+
+There are several situations in which a project already may have a ``.ts_pre_commit_config.yaml`` file.
+One is when another developer has configured the project and you have cloned the repo.
+Another is when a project was configured by you and one or more ``pre-commit`` hooks were updated.
+A third is when the project previously didn't use ``mypy`` and now it does.
+
+In all cases the config files for ``pre-commit`` and the hooks can easily be created or updated.
+All that needs to be done is to run the ``generate_pre_commit_conf`` command without any arguments.
+The ``generate_pre_commit_conf`` command will read the existing ``.ts_pre_commit_config.yaml`` file and use that to do its work.
+Note that this will overwrite the existing ``.gitignore`` and ``.pre-commit-config.yaml`` files as well as any existing config file for the ``pre-commit`` hooks.
+
+Projects without a ``.ts_pre_commit_config.yaml`` file
+------------------------------------------------------
+
 To enable this in a new project or a project that isn't configured for pre-commit yet, follow the instructions for installing pre-commit in the previous section.
 In case of a project that already has a ``.pre-commit-config.yaml`` configuration file, execute these steps:
 
@@ -64,12 +90,3 @@ Then, in all cases, execute these steps:
   Changes made by isort are usually innocuous, but it is configured to sort includes in ``__init__.py`` files, so there is potential for breakage.
   If mypy complains, update your code.
 * Once this is all done, create a git commit to reflect the change with ``git commit -a -m "Use ts_pre_commit_conf"``.
-
-The ``generate_pre_commit_conf`` command fails with a comprehensive error message if a mandatory or optional ``pre-commit`` hook is missing.
-All ``pre-commit`` hooks except for ``mypy`` are mandatory for TSSW projects, so those hooks need to be set to ``true``.
-Setting one or more of the mandatory hooks to ``false`` will make the ``generate_pre_commit_conf`` command fail with a comprehensive error message.
-
-The configuration files will be updated whenever the pre-commit hooks get updated.
-Apart from that, all generated configuration file names get added to ``.gitignore`` as well.
-The TSSW Jenkins CI jobs update these configuration files and execute pre-commit every time the jobs run, so you know that you need to update them locally and fix your code if a job fails.
-You can update the config file locally by running the ``generate_pre_commit_conf`` command again.
