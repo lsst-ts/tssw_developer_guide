@@ -15,6 +15,7 @@ This uses the Jenkins shared library with the following parameters
 :build_all_idl: This will build all of the IDL files if true.
 :extra-packages: An array of strings in the form of "organization/repo_name" to clone and build that are not already included in the develop environment image.
 :kickoff_jobs: An array of strings of the names of the Jenkins jobs to kickoff before the build is declared done.
+:has_doc_site: Does this package have a doc site? If false, skips the ``build and upload documentation`` stage on the CI.
 
 .. literalinclude:: ./Jenkinsfile.example
 
