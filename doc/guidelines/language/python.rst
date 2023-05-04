@@ -1,3 +1,5 @@
+.. _Python:
+
 ######
 Python
 ######
@@ -19,14 +21,8 @@ This guide assumes a repo created with the Templates project or using the sqr-bo
    :language: python
    :caption: setup.py
 
-.. literalinclude:: setup.cfg.example
-   :caption: setup.cfg
-
 Style Guide
 ===========
-
-.. literalinclude:: .pre-commit-config.yaml.example
-   :caption: .pre-commit-config.yaml
 
 The team uses the following tools to enforce the style guide.
 

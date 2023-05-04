@@ -2,7 +2,7 @@
 Docker for development on Mac M1
 ################################
 
-Most of these instructions are valid for any docker based development in but the M1 has a couple of special requirements. 
+Most of these instructions are valid for any docker based development, but the M1 has a couple of special requirements.
 
 Install and setup Docker
 ========================
@@ -11,7 +11,7 @@ Install docker by e..g downloading the install from `the docker website <https:/
 
 Once you have docker desktop running open the settings (Cmd ,)
 
-- In the General settings make sure 'VirtioFS' is selected. 
+- In the General settings make sure 'VirtioFS' is selected.
 
 .. figure:: ../images//DockerSettingG.png
    :name: fig-dockerg
@@ -36,6 +36,7 @@ The '-v' option may be used to mount a local directory into the container - keep
 So a command to spin up a container and put you on the command prompt would look like (with output) :
 
 .. code-block:: sh
+
     $ docker run --platform linux/amd64 --privileged --name sal --rm  -v ${HOME}/LSSTcode/TSS:/home/saluser/develop -it lsstts/develop-env:develop
     LSST_SDK_INSTALL /home/saluser/repos/ts_sal
     Using DDS QOS from /home/saluser/repos/ts_sal/../ts_ddsconfig/python/lsst/ts/ddsconfig/data/qos/QoS.xml
@@ -46,23 +47,24 @@ So a command to spin up a container and put you on the command prompt would look
     LSST middleware toolset environment v7.2.0-4-g2e9da550 is configured.
     LSST_SDK_INSTALL=/home/saluser/repos/ts_sal
     OSPL_HOME=/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux
-    [saluser@4f8cd5447d04 ~]$ 
+    [saluser@4f8cd5447d04 ~]$
 
 
-From there you are ready to conda install or setup up any packages you need. 
+From there you are ready to conda install or setup up any packages you need.
 
 Stable containers and other tags
 ++++++++++++++++++++++++++++++++
 
-There are many alternatives to the `develop` tag for container - specifically the per cycle container is useful. 
+There are many alternatives to the `develop` tag for container - specifically the per cycle container is useful.
 Cycles are listed `here on confluence <https://confluence.lsstcorp.org/display/LSSTCOM/Software+Upgrades>`.
 
-The `develop-env tags on DockerHub are listed here <https://hub.docker.com/r/lsstts/develop-env/tags>`. 
-Specific cycle containers are labeled `cCCCC.VVV`, where `CCCC` is  the cycle number (e.g. 0028) and `VVV` is version (e.g. 004). 
-So to get specifically c0029,  use:
+The `develop-env tags on DockerHub are listed here <https://hub.docker.com/r/lsstts/develop-env/tags>`.
+Specific cycle containers are labeled `cCCCC.VVV`, where `CCCC` is  the cycle number (e.g. 0028) and `VVV` is version (e.g. 004).
+So to get specifically c0028.004,  use:
 
 .. code-block:: sh
+
     lsstts/develop-env:c0028.004
 
 
-in the docker run command above. 
+in the docker run command above.

@@ -78,6 +78,13 @@ In case of a project that already has a ``.pre-commit-config.yaml`` configuratio
 
 * Inspect the ``.pre-commit-config.yaml`` file to see if the project uses mypy or not.
 * Remove the ``.pre-commit-config.yaml`` file with ``git rm --cached .pre-commit-config.yaml``.
+* Remove ``setup.cfg`` if it exists with ``git rm --cached setup.cfg``.
+* Remove ``setup.cfg`` from the ``test`` -> ``source_files`` section of ``conda/meta.yaml`` conda recipe if it is in there.
+  Also remove ``pytest-flake8`` and/or ``pytest-asyncio`` from the ``test`` -> ``requires`` section of ``conda/meta.yaml`` conda recipe if any of them are in there.
+  See :ref:`Conda` for information on what ``conda/meta.yaml`` should contain.
+* Update ``pyproject.toml`` and remove all references to pre-commit hook configuration if there are any.
+  Note that this includes all `flake8` options and the ``addopts`` line in the ``tool.pytest.ini_options`` section.
+  See :ref:`Python` for information on what ``pyproject.toml`` should contain.
 
 Then, in all cases, execute these steps:
 
@@ -89,4 +96,4 @@ Then, in all cases, execute these steps:
   Changes made by black can be accepted "as is".
   Changes made by isort are usually innocuous, but it is configured to sort includes in ``__init__.py`` files, so there is potential for breakage.
   If mypy complains, update your code.
-* Once this is all done, create a git commit to reflect the change with ``git commit -a -m "Use ts_pre_commit_conf"``.
+* Once this is all done, create a git commit to reflect the change with ``git commit -a -m "Use ts_pre_commit_conf."``.
