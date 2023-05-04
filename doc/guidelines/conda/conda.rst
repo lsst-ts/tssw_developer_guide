@@ -1,10 +1,12 @@
+.. _Conda:
+
 =====================
 Conda Developer Guide
 =====================
 
 .. note::
 
-   This document contains a developer guide for conda and Telescope Site Software. 
+   This document contains a developer guide for conda and Telescope Site Software.
 
 
 Procedure
@@ -147,7 +149,7 @@ They are located in the same directory as the recipe.
 The files are called
 
 ::
-  
+
     .
     |____pre-unlink.sh
     |____pre-link.sh
@@ -306,17 +308,6 @@ Create a meta.yaml file within this directory.
 
     test:
       requires:
-        - pytest
-        - pytest-flake8
-        - pytest-cov
-        - asynctest
-        - pytest-tornasync
-        - numpy
-        - astropy
-        - jsonschema
-        - pyyaml
-        - boto3
-        - moto
         - ts-dds
         - ts-idl
         - ts-salobj
@@ -324,7 +315,6 @@ Create a meta.yaml file within this directory.
         - python
         - bin
         - tests
-        - setup.cfg
       commands:
         - py.test
 

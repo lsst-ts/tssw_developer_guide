@@ -30,7 +30,6 @@ test:
         - bin
         - tests
         - schema
-        - setup.cfg
         - pyproject.toml
     commands:
         - pytest
