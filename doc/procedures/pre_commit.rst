@@ -73,27 +73,28 @@ Note that this will overwrite the existing ``.gitignore`` and ``.pre-commit-conf
 Projects without a ``.ts_pre_commit_config.yaml`` file
 ------------------------------------------------------
 
-To enable this in a new project or a project that isn't configured for pre-commit yet, follow the instructions for installing pre-commit in the previous section.
-In case of a project that already has a ``.pre-commit-config.yaml`` configuration file, execute these steps:
+For a project that already has a ``.pre-commit-config.yaml`` configuration file, execute these steps:
 
 * Inspect the ``.pre-commit-config.yaml`` file to see if the project uses mypy or not.
 * Remove the ``.pre-commit-config.yaml`` file with ``git rm --cached .pre-commit-config.yaml``.
-* Remove ``setup.cfg`` if it exists with ``git rm --cached setup.cfg``.
-* Remove ``setup.cfg`` from the ``test`` -> ``source_files`` section of ``conda/meta.yaml`` conda recipe if it is in there.
-  Also remove ``pytest-flake8`` and/or ``pytest-asyncio`` from the ``test`` -> ``requires`` section of ``conda/meta.yaml`` conda recipe if any of them are in there.
+* Remove ``setup.cfg`` if it exists with ``git rm setup.cfg`` (note: this file has been replaced by ``.flake8``).
+* Update ``conda/meta.yaml`` to remove ``setup.cfg``, ``pytest-flake8``, and ``pytest-asyncio``, if present.
   See :ref:`Conda` for information on what ``conda/meta.yaml`` should contain.
-* Update ``pyproject.toml`` and remove all references to pre-commit hook configuration if there are any.
-  Note that this includes all `flake8` options and the ``addopts`` line in the ``tool.pytest.ini_options`` section.
+* Update ``pyproject.toml`` to remove all linter configuration.
+  This includes all `flake8` options and the ``addopts`` line in the ``tool.pytest.ini_options`` section.
   See :ref:`Python` for information on what ``pyproject.toml`` should contain.
 
 Then, in all cases, execute these steps:
 
-* Install ``ts_pre_commit_conf`` if not already done, for instance ``conda install -y -c lsstts ts-pre-commit-config``.
-* Then execute ``generate_pre_commit_conf --create`` if mypy is used, or ``generate_pre_commit_conf --create --no-mypy`` if not.
+* Install ``ts_pre_commit_conf`` if not already done, as per the installation instructions above.
+* Execute ``generate_pre_commit_conf --create`` if mypy is used, or ``generate_pre_commit_conf --create --no-mypy`` if not.
 * Add the newly created ``.ts_pre_commit_config.yaml`` to git with ``git add .ts_pre_commit_config.yaml``.
-* Committing the changes at this stage may lead to errors from the pre-commit hooks, so first run pre-commit on the command line with ``pre-commit run --all-files``.
-  If this changes anything, then fix as needed.
-  Changes made by black can be accepted "as is".
-  Changes made by isort are usually innocuous, but it is configured to sort includes in ``__init__.py`` files, so there is potential for breakage.
-  If mypy complains, update your code.
+* Run the pre-commit hooks on all of your code, using ``pre-commit run --all-files``.
+  If this changes anything, fix as needed:
+
+  * Fix mypy errors.
+  * If isort changes any ``__init__.py`` files, run unit tests and fix any breakage.
+    Other isort changes should be innocuous, but it never hurts to run unit tests.
+  * Changes made by black should never break anything.
+
 * Once this is all done, create a git commit to reflect the change with ``git commit -a -m "Use ts_pre_commit_conf."``.
