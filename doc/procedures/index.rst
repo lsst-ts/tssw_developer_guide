@@ -12,6 +12,7 @@ Procedures
     development_workflow
     reporting-xml-release-work
     csc_xml_addition_removal
+    xml_changelog
     versioning
     software
     pre_commit
