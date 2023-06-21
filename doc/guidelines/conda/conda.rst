@@ -4,9 +4,10 @@
 Conda Developer Guide
 =====================
 
-.. note::
+.. warning::
 
-   This document contains a developer guide for conda and Telescope Site Software.
+   This page is deprecated.
+   Please use :ref:`Conda-Jenkinsfile` instead.
 
 
 Procedure

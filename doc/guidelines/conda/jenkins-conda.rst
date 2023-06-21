@@ -1,13 +1,12 @@
 .. _Conda-Jenkinsfile:
 
-#################
-Conda Jenkinsfile
-#################
+#######################
+Setup Conda for Jenkins
+#######################
 
-The purpose of this document is to make a how-to for having a conda package build on CI.
+The purpose of this document is to make a how-to for having a conda package build on Jenkins.
 This document includes templates for accomplishing this goal.
 The first step is to create a conda recipe for a CSC.
-The :doc:`conda development guide <./conda>` will be helpful.
 A template for doing so has been included on this page.
 
 
@@ -19,6 +18,7 @@ Then touch a :file:`meta.yaml` file inside of the ``conda`` folder.
 Change the ``csc-name`` so that it becomes the name of the csc.
 Another thing is to change requirements so that they match the CSC's.
 Keep in mind that the test requirements need to include test framework dependencies.
+It is suggested to sort dependencies as that increases readability of the recipe.
 Also to find the configuration repo, look for the :meth:`get_config_pkg` in the CSC class.
 
 .. literalinclude:: ./meta.yaml.template
