@@ -40,7 +40,7 @@ Additional Information
 
 *  See :ref:`Jenkinsfile` for information on how to setup the CI job for your packages.
    This job is usually used to test PRs and are triggered by pushes to the github repo.
-*  See :ref:`Conda-Jenkinsfile` for information on how to setup the CI conda job for your packages.
+*  See :ref:`Conda` for information on how to setup the CI conda job for your packages.
    This job is used to build conda packages.
    They are triggered daily by the build system and automatically when tags are pushed to the github repo.
 *  See :ref:`documentation-guide` for information on how to write and publish package documentation.

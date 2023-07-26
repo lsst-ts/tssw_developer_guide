@@ -1,2 +1,2 @@
 @Library('JenkinsShared')_
-CondaPipeline(["configuration_repo"], "package_name", "package_namespace")
+CondaPipeline(["configuration_repo"], "package_name", "module_namespace", "arch")
