@@ -14,11 +14,14 @@ To enable this:
 The following pre-commit hooks are used:
 
 :black: An opinionated autoformatter.
-:isort: An opinionated import sorter.
-:flake8: A style checker with many different plugins to enforce different rules.
-:check-yaml: Checks yaml files for proper format.
 :check-xml: Checks xml files for proper format.
+:check-yaml: Checks yaml files for proper format.
+:clang-format: Format files with ClangFormat.
+:flake8: A style checker with many different plugins to enforce different rules.
+:format-xmllint: Feed all XML files through xmllint.
+:isort: An opinionated import sorter.
 :mypy: Performs type checking on the code (optional).
+:ruff: An extremely fast Python linter, written in Rust.
 
 
 ##################
@@ -41,16 +44,20 @@ An example where all ``pre-commit`` hooks are enabled is:
 
 .. code-block:: yaml
 
-   check-yaml: true
-   check-xml: true
-   black: true
-   flake8: true
-   isort: true
-   mypy: true
+    black: true
+    check-xml: true
+    check-yaml: true
+    clang-format: true
+    flake8: true
+    format-xmllint: true
+    isort: true
+    mypy: true
+    ruff: true
 
 
 The ``generate_pre_commit_conf`` command fails with a comprehensive error message if a mandatory or optional ``pre-commit`` hook is missing.
 All ``pre-commit`` hooks except for ``mypy`` are mandatory for TSSW projects, so those hooks need to be set to ``true``.
+The ``clang-format`` and ``ruff`` hooks may be omitted from the ``.ts-pre-commit-config.yaml`` configuration file as they are optional.
 Setting one or more of the mandatory hooks to ``false`` will make the ``generate_pre_commit_conf`` command fail with a comprehensive error message.
 
 The configuration files will be updated whenever the pre-commit hooks get updated.
@@ -99,3 +106,29 @@ Then, in all cases, execute these steps:
   * Changes made by black should never break anything.
 
 * Once this is all done, create a git commit to reflect the change with ``git commit -a -m "Use ts_pre_commit_conf."``.
+
+Adding a new hook
+-----------------
+
+In order to add a new hook, do the following:
+
+* Create a new ticket branch in the ``ts_pre_commit_conf`` project following the :ref:`development-workflow`.
+* Edit the ``lsst/ts/pre_commit_conf/pre_commit_hooks.py`` file.
+* Add a new entry to the ``registry`` dict providing the following information:
+
+  * pre_commit_config: the config for the ``.pre-commit-config.yaml`` file.
+    Provide this as a triple quoted string without leading or trailing whitespace apart from a newline character at the end.
+    See the other hooks in the registry for examples.
+  * config_file_name: the name of the config file of the hook, or None if the hook doesn't require a config file.
+  * config: the config file contents as a string.
+    Provide this as a triple quoted string without leading or trailing whitespace apart from a newline character at the end.
+    See the other hooks in the registry for examples.
+    Note that this needs to be set to None if config_file_name is set to None.
+  * optional: indicate whether the hook is optional (``True``) or not (``False``).
+    Setting this to True will still include the hook but will not make the ``generate_pre_commit_conf`` command complain if it is missing.
+  * excludable: indicate whether the hook can be excluded (``True``) or not (``False``).
+    The difference with optional is that excludable will generate a command line option that allows for actively excluding the hook.
+    Setting this to ``True`` will generate an entry in the ``.ts-pre-commit-config.yaml`` configuration file for the hook with the value ``false``.
+    This will also exclude the hook configuration from the ``.pre-commit-config.yaml`` file.
+
+Note that ``config_file_name`` and ``config`` may be omitted when they are ``None`` and  ``optional`` and ``excludable`` when they are ``False`` since thise are the default values.
