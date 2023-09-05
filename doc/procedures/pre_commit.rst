@@ -57,7 +57,7 @@ An example where all ``pre-commit`` hooks are enabled is:
 
 The ``generate_pre_commit_conf`` command fails with a comprehensive error message if a mandatory or optional ``pre-commit`` hook is missing.
 All ``pre-commit`` hooks except for ``mypy`` are mandatory for TSSW projects, so those hooks need to be set to ``true``.
-The ``clang-format`` and ``ruff`` hooks may be omitted from the ``.ts-pre-commit-config.yaml`` configuration file as they are optional.
+The ``clang-format``, ``format-xmllint`` and ``ruff`` hooks may be omitted from the ``.ts-pre-commit-config.yaml`` configuration file as they are optional.
 Setting one or more of the mandatory hooks to ``false`` will make the ``generate_pre_commit_conf`` command fail with a comprehensive error message.
 
 The configuration files will be updated whenever the pre-commit hooks get updated.
