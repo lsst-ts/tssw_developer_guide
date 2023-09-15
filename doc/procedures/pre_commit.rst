@@ -16,7 +16,7 @@ The following pre-commit hooks are used:
 :black: An opinionated autoformatter.
 :check-xml: Checks xml files for proper format.
 :check-yaml: Checks yaml files for proper format.
-:clang-format: Format files with ClangFormat.
+:clang-format: Format files with ClangFormat (optional).
 :flake8: A style checker with many different plugins to enforce different rules.
 :format-xmllint: Feed all XML files through xmllint.
 :isort: An opinionated import sorter.
@@ -56,7 +56,7 @@ An example where all ``pre-commit`` hooks are enabled is:
 
 
 The ``generate_pre_commit_conf`` command fails with a comprehensive error message if a mandatory or optional ``pre-commit`` hook is missing.
-All ``pre-commit`` hooks except for ``mypy`` are mandatory for TSSW projects, so those hooks need to be set to ``true``.
+All ``pre-commit`` hooks except for ``clang-format`` and ``mypy`` are mandatory for TSSW projects, so those hooks need to be set to ``true``.
 The ``clang-format``, ``format-xmllint`` and ``ruff`` hooks may be omitted from the ``.ts-pre-commit-config.yaml`` configuration file as they are optional.
 Setting one or more of the mandatory hooks to ``false`` will make the ``generate_pre_commit_conf`` command fail with a comprehensive error message.
 
@@ -71,7 +71,7 @@ Projects with a ``.ts_pre_commit_config.yaml`` file
 There are several situations in which a project already may have a ``.ts_pre_commit_config.yaml`` file.
 One is when another developer has configured the project and you have cloned the repo.
 Another is when a project was configured by you and one or more ``pre-commit`` hooks were updated.
-A third is when the project previously didn't use ``mypy`` and now it does.
+A third is when the project previously didn't use ``clang-format`` or ``mypy`` and now it does.
 
 In all cases the config files for ``pre-commit`` and the hooks can easily be created or updated.
 All that needs to be done is to run the ``generate_pre_commit_conf`` command without any arguments.
@@ -83,7 +83,7 @@ Projects without a ``.ts_pre_commit_config.yaml`` file
 
 For a project that already has a ``.pre-commit-config.yaml`` configuration file, execute these steps:
 
-* Inspect the ``.pre-commit-config.yaml`` file to see if the project uses mypy or not.
+* Inspect the ``.pre-commit-config.yaml`` file to see if the project uses clang-format and/or mypy or not.
 * Remove the ``.pre-commit-config.yaml`` file with ``git rm --cached .pre-commit-config.yaml``.
 * Remove ``setup.cfg`` if it exists with ``git rm setup.cfg`` (note: this file has been replaced by ``.flake8``).
 * Update ``conda/meta.yaml`` to remove ``setup.cfg``, ``pytest-flake8``, and ``pytest-asyncio``, if present.
@@ -95,7 +95,8 @@ For a project that already has a ``.pre-commit-config.yaml`` configuration file,
 Then, in all cases, execute these steps:
 
 * Install ``ts_pre_commit_conf`` if not already done, as per the installation instructions above.
-* Execute ``generate_pre_commit_conf --create`` if mypy is used, or ``generate_pre_commit_conf --create --no-mypy`` if not.
+* Execute ``generate_pre_commit_conf --create`` if clang-format and mypy are used.
+  Use the ``--no-clang-format`` option to exclude clang-format and the ``--no-mypy`` option to exclude mypy.
 * Add the newly created ``.ts_pre_commit_config.yaml`` to git with ``git add .ts_pre_commit_config.yaml``.
 * Run the pre-commit hooks on all of your code, using ``pre-commit run --all-files``.
   If this changes anything, fix as needed:
