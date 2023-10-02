@@ -56,9 +56,19 @@ An example where all ``pre-commit`` hooks are enabled is:
 
 
 The ``generate_pre_commit_conf`` command fails with a comprehensive error message if a mandatory or optional ``pre-commit`` hook is missing.
-All ``pre-commit`` hooks except for ``clang-format`` and ``mypy`` are mandatory for TSSW projects, so those hooks need to be set to ``true``.
-The ``clang-format``, ``format-xmllint`` and ``ruff`` hooks may be omitted from the ``.ts-pre-commit-config.yaml`` configuration file as they are optional.
+The ``black``, ``check-xml``, ``check-yaml``, ``flake8`` and ``isort`` hooks are mandatory for TSSW projects, so those hooks need to be set to ``true``.
 Setting one or more of the mandatory hooks to ``false`` will make the ``generate_pre_commit_conf`` command fail with a comprehensive error message.
+The ``clang-format``, ``format-xmllint``, ``ruff`` and ``towncrier`` hooks are optional and do not get included by default.
+They can be included by using the corresponding ``--with-XXX`` command line option.
+The ``mypy`` hook is optional and gets included by default.
+It can be excluded by using the corresponding ``--no-mypy`` command line option.
+Setting one or more of the optional hooks to ``false`` or omitting them from the ``.ts-pre-commit-config.yaml`` file will make the ``generate_pre_commit_conf`` command skip those hooks.
+
+It is possible to add custom ``pre-commit`` hook configuration files.
+This may be necessary in case the TSSW configuration doesn't match what is required for the project.
+In such a case, the configuration file needs to be committed to git.
+By default, the ``generate_pre_commit_conf`` command skips overwriting existing hook configuration files.
+If the hook configuration files need to be overwritten, for instance when the TSSW configuration rules change, then the ``--overwrite`` command line option can be used.
 
 The configuration files will be updated whenever the pre-commit hooks get updated.
 Apart from that, all generated configuration file names get added to ``.gitignore`` as well.
@@ -125,11 +135,13 @@ In order to add a new hook, do the following:
     Provide this as a triple quoted string without leading or trailing whitespace apart from a newline character at the end.
     See the other hooks in the registry for examples.
     Note that this needs to be set to None if config_file_name is set to None.
-  * optional: indicate whether the hook is optional (``True``) or not (``False``).
-    Setting this to True will still include the hook but will not make the ``generate_pre_commit_conf`` command complain if it is missing.
-  * excludable: indicate whether the hook can be excluded (``True``) or not (``False``).
-    The difference with optional is that excludable will generate a command line option that allows for actively excluding the hook.
-    Setting this to ``True`` will generate an entry in the ``.ts-pre-commit-config.yaml`` configuration file for the hook with the value ``false``.
-    This will also exclude the hook configuration from the ``.pre-commit-config.yaml`` file.
+  * rule_type: this can be one of
 
-Note that ``config_file_name`` and ``config`` may be omitted when they are ``None`` and  ``optional`` and ``excludable`` when they are ``False`` since thise are the default values.
+    * MANDATORY: The hook is mandatory for all TSSW projects.
+      Adding such a type of hook needs to be discussed at TSSW standup first.
+    * OPT_IN: The hook is optional and does not get included by default.
+      The majority of the hooks will be of the OPT_IN rule type.
+    * OPT_OUT: The hook is optional and gets included by default.
+      Adding such a type of hook needs to be discussed at TSSW standup first.
+
+Note that ``config_file_name`` and ``config`` may be omitted when they are ``None`` and  ``optional`` and ``excludable`` when they are ``False`` since ``None`` is the default value.
