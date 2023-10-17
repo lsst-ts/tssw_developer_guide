@@ -13,13 +13,13 @@ Once you have docker desktop running open the settings (Cmd ,)
 
 - In the General settings make sure 'VirtioFS' is selected.
 
-.. figure:: ../images//DockerSettingG.png
+.. figure:: ../../../images/DockerSettingG.png
    :name: fig-dockerg
    :alt: Docker General Settings
 
 - In the Features in Development settings select 'Use Rosetta for X86/amd64 emulation on Apple Silicon'
 
-.. figure:: ../images//DockerSettingD.png
+.. figure:: ../../../images/DockerSettingD.png
    :name: fig-dockerd
    :alt: Docker Development Settings
 

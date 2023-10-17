@@ -1,4 +1,4 @@
-.. _development-workflow:
+.. _development_workflow:
 
 ####################
 Development Workflow

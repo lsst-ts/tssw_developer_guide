@@ -34,17 +34,4 @@ The team uses the following tools to enforce the style guide.
 :mypy: Performs type checking on the code (optional).
 
 There are several other optional style guide tools as well.
-This is enforced by a tool called ``pre-commit``, see the reference below.
-
-Additional Information
-======================
-
-*  See :ref:`Jenkinsfile` for information on how to setup the CI job for your packages.
-   This job is usually used to test PRs and are triggered by pushes to the github repo.
-*  See :ref:`Conda` for information on how to setup the CI conda job for your packages.
-   This job is used to build conda packages.
-   They are triggered daily by the build system and automatically when tags are pushed to the github repo.
-*  See :ref:`documentation-guide` for information on how to write and publish package documentation.
-*  See :ref:`Versioning` for information on how to version your packages.
-*  See :ref:`reporting-xml-release-work` for information on how to update CSCs interfaces.
-* See :ref:`pre-commit` for more information on the pre-commit tool.
+This is enforced by a tool called :ref:`pre-commit`.
