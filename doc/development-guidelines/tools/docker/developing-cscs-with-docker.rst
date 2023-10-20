@@ -101,7 +101,28 @@ File permission in Linux
 
 When using docker in linux the file permissions from the OS are also used inside the containers.
 This ends up causing issues if the used id inside the container don't match your user id.
-One way around this issue is to make sure you user id matches the one in the container.
+This can be solved by using something called Access Control List(s) or ACL.
+First you start by creating a group called saluser with the group id of 73006 and make your user a member of that group.
+
+.. prompt:: bash
+
+	sudo groupadd -g 73006 saluser
+	usermod -aG saluser ${USER}
+
+.. note:: You'll need to logout and login again for this change to take effect.
+
+The next step is to change group ownership of the tsrepos to saluser and set the default group set bit so that future files and directory are owned by saluser.
+
+.. prompt:: bash
+
+	chgrp -R saluser ~/Develop/ts_repos/   # This sets the group ownership to saluser for all files and folders under and including ts_repos
+	chmod -R g+s ~/Develop/ts_repos/  # This sets the future files and folders created to directory to be under saluser group otherwise it would be your default user group.
+	setfacl -d -m -R g:73006:rwX ~/Develop/ts_repos/  # This creates an ACL that allows saluser to have read, write and execute permissions for files and folders under ts_repos, the capital X only sets the executable bit for directories which is safer than every file also be executable with a lower case x
+	
+Using this method, you can work with the files and folders as bind mounts within both the docker container and as regular storage on your system with no issue.
+You would also not lose the changes each time the container is lost for one reason or another(shutdown or power outage).
+
+Another way around this issue is to make sure you user id matches the one in the container.
 All develop-env containers are build with saluser with uid:gid=73006:73006.
 
 If you can not change the user/group id in your linux machine, another alternative is to use the container with VSCode extension.
