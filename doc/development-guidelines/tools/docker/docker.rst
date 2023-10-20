@@ -1,12 +1,8 @@
-##################
-Docker Development
-##################
+.. _installing_docker_on_centos:
 
-Docker is TSSW's preferred method for CSC development.
-Docker is a containerization software designed to help application environments maintain consistency between machines.
-
+###########################
 Installing docker on CentOS
-===========================
+###########################
 
 Docker Install via Docker's repository
 --------------------------------------

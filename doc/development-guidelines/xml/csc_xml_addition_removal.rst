@@ -1,3 +1,6 @@
+
+.. _adding_or_removing_a_csc_from_the_xml_interface:
+
 ###############################################
 Adding or Removing a CSC from the XML Interface
 ###############################################

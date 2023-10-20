@@ -8,8 +8,8 @@ Exceptions (e.g. see the cycle build) should be well documented in the package a
 
 Tagging a version has the following rules:
 
-  * ticket branches can be tagged with ``vX.Y.Z.alpha.N`` or ``vX.Y.Z.beta.N`` tags
-  * The develop branch can be tagged with ``vX.Y.Z.rc.N``
+  * ticket branches can be tagged with ``vX.Y.Z-alpha.N`` or ``vX.Y.Z-beta.N`` tags
+  * The develop branch can be tagged with ``vX.Y.Z-rc.N``
     If your code is using ts_xml develop branch then the CSC release must be tagged here.
   * Main branch is reserved for main tags: ``vX.Y.Z``
     Any releases tagged from here must be compatible with the current released version of ts_xml.
@@ -29,8 +29,10 @@ Where X, Y and Z are major, minor and point/hotfix respectively.
 
     .. prompt:: bash
 
-      git tag vX.Y.Z.a.N
-      git push origin vX.Y.Z.a.N
+      git tag vX.Y.Z-alpha.N
+      git push origin vX.Y.Z-alpha.N
+
+    Note that there is no need to annotate alpha tags.
 
   .. tab-item:: Tag beta
 
@@ -39,8 +41,10 @@ Where X, Y and Z are major, minor and point/hotfix respectively.
 
     .. prompt:: bash
 
-      git tag vX.Y.Z.b.N
-      git push origin vX.Y.Z.b.N
+      git tag vX.Y.Z-beta.N
+      git push origin vX.Y.Z-beta.N
+
+    Note that there is no need to annotate beta tags.
 
   .. tab-item:: Tag release candidate
 
@@ -50,8 +54,10 @@ Where X, Y and Z are major, minor and point/hotfix respectively.
 
     .. prompt:: bash
 
-      git tag vX.Y.Z.rc.N
-      git push origin vX.Y.Z.rc.N
+      git tag vX.Y.Z-rc.N --annotate -m "Add release message here."
+      git push origin vX.Y.Z-rc.N
+
+    Release candidate tags should be annotated.
 
   .. tab-item:: Tag release
 
@@ -60,6 +66,7 @@ Where X, Y and Z are major, minor and point/hotfix respectively.
 
     .. prompt:: bash
 
-      git tag -a vX.Y.Z
+      git tag -a vX.Y.Z --annotate -m "Add release message here."
       git push origin vX.Y.Z
 
+    Release tags should be annotated.
