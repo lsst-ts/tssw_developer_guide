@@ -1,4 +1,5 @@
 {% set data= load_setup_py_data() %}
+
 package:
     name: csc-name
     version: {{ data.get('version') }}
@@ -12,11 +13,10 @@ build:
 
 test:
     requires:
-        - ts-conda-build =0.3
+        - ts-conda-build =0.4
         - ts-idl {{ idl_version }}
         - ts-salobj {{ salobj_version }}
     source_files:
-        - bin
         - pyproject.toml
         - python
         - tests
@@ -25,6 +25,7 @@ test:
 
 requirements:
     host:
+        - pip
         - python {{ python }}
         - setuptools
         - setuptools_scm
@@ -32,11 +33,9 @@ requirements:
         - python {{ python }}
         - setuptools
         - setuptools_scm
-        - ts-conda-build =0.3
     run:
         - python {{ python }}
         - setuptools
         - setuptools_scm
-        - ts-idl
         - ts-salobj
         # Add any other runtime dependencies here
