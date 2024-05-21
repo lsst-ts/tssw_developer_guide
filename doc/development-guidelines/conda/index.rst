@@ -25,20 +25,13 @@ To find the configuration repo, look for the :meth:`get_config_pkg` in the CSC c
     :language: yaml+jinja
     :caption: meta.yaml
 
-Locally test the recipe by running the following command
+Locally test the recipe in the develop-env:develop image by using the following
 
 .. prompt:: bash
 
-    docker run -e {config_repo}=/path/to/config/repo \\
-        -v /path/to/your/repos:/home/saluser/develop \\
-        -it ts-dockerhub.lsst.org/conda_package_builder
-
-Then run the following inside of the container.
-
-.. prompt:: bash
-
-    cd path/to/conda/recipe
-    conda build --variants "{salobj_version: '', idl_version: ''}" --prefix-length 100 .
+    unsetup ts_config_{package} # this is required otherwise the EV will not picked up correctly by conda build
+    cd path/to/package/root
+    TS_CONFIG_PACKAGE_DIR=~/saluser/repos/ts_config_package conda build --variants "{salobj_version: '', idl_version: ''}" --no-long-test-prefix .
 
 Creating the Jenkinsfile
 ========================
