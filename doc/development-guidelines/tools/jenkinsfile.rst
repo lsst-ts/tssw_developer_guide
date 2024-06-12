@@ -16,6 +16,7 @@ This uses the Jenkins shared library with the following parameters
 :extra-packages: An array of strings in the form of "organization/repo_name" to clone and build that are not already included in the develop environment image.
 :kickoff_jobs: An array of strings of the names of the Jenkins jobs to kickoff before the build is declared done.
 :has_doc_site: Does this package have a doc site? If false, skips the ``build and upload documentation`` stage on the CI.
+:use_pyside6: Use PySide6 for QT development instead of PySide2?
 
 .. literalinclude:: ./Jenkinsfile.example
 
