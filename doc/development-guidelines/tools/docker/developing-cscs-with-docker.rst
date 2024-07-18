@@ -117,7 +117,7 @@ The next step is to change group ownership of the ts_repos to saluser and set th
 
 	chgrp -R saluser ~/Develop/ts_repos/   # This sets the group ownership to saluser for all files and folders under and including ts_repos
 	chmod -R g+s ~/Develop/ts_repos/  # This sets the future files and folders created to directory to be under saluser group otherwise it would be your default user group.
-	setfacl -d -m -R g:73006:rwX ~/Develop/ts_repos/  # This creates an ACL that allows saluser to have read, write and execute permissions for files and folders under ts_repos, the capital X only sets the executable bit for directories which is safer than every file also be executable with a lower case x
+	setfacl -d -R -m g:73006:rwX ~/Develop/ts_repos/  # This creates an ACL that allows saluser to have read, write and execute permissions for files and folders under ts_repos, the capital X only sets the executable bit for directories which is safer than every file also be executable with a lower case x
 	
 Using this method, you can work with the files and folders as bind mounts within both the docker container and as regular storage on your system with no issue.
 You would also not lose the changes each time the container is lost for one reason or another(shutdown or power outage).
