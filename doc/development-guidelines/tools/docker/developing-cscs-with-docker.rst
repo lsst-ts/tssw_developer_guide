@@ -37,12 +37,12 @@ Create a development directory
 Before running the development environment container we recommend creating a directory to host the code you will work on your local machine.
 If you already have a directory than skip to the next session.
 
-We recommend using a path like ``~/Develop/tsrepos`` to store the repositories you will be working on from TSSW.
+We recommend using a path like ``~/Develop/ts_repos`` to store the repositories you will be working on from TSSW.
 To create this directory you can run the following command in the command line:
 
 .. prompt::
 
-    mkdir -p ~/Develop/tsrepos
+    mkdir -p ~/Develop/ts_repos
 
 Running the container
 #####################
@@ -51,10 +51,10 @@ Run docker mounting the directory with your code into it:
 
 .. prompt::
 
-    docker run -it --rm --name dev -v ~/Develop/tsrepos/:/home/saluser/tsrepos lsstts/develop-env:develop
+    docker run -it --rm --name dev -v ~/Develop/ts_repos/:/home/saluser/ts_repos lsstts/develop-env:develop
 
 The command above will run the container in interactive mode (``-it``), will remove the container once it exits (``--rm``) and will name the container "dev" (``--name dev``).
-It is also mounting the local directory ``~/Develop/tsrepos/`` in the ``/home/saluser/tsrepos`` path inside the container.
+It is also mounting the local directory ``~/Develop/ts_repos/`` in the ``/home/saluser/ts_repos`` path inside the container.
 
 After executing the command above, you will be in a prompt inside the container.
 Any command you type there will be executed by the container, which also contains all the software stack required to test/run the TSSW components.
@@ -62,7 +62,7 @@ Any command you type there will be executed by the container, which also contain
 The container ships with a variety of packages from TSSW and you can also setup your own packages for developing in the container.
 To do that you can either use ``eups`` or ``pypi`` to setup the package for development.
 
-For example, if you are working on a project called ``ts_myproject`` and want to set it up in the container, you would first close the repository in the ``~/Develop/tsrepos`` directory from your machine (it is better not to clone the repository from inside the container).
+For example, if you are working on a project called ``ts_myproject`` and want to set it up in the container, you would first close the repository in the ``~/Develop/ts_repos`` directory from your machine (it is better not to clone the repository from inside the container).
 Then you can setup the project using one of the following options:
 
 .. tab-set::
@@ -73,7 +73,7 @@ Then you can setup the project using one of the following options:
     
     .. prompt:: bash
 
-        cd /home/saluser/tsrepos/ts_myproject
+        cd /home/saluser/ts_repos/ts_myproject
         eups declare -r . -t $USER
         setup ts_myproject -t $USER
 
@@ -85,7 +85,7 @@ Then you can setup the project using one of the following options:
     
     .. prompt:: bash
 
-        cd /home/saluser/tsrepos/ts_myproject
+        cd /home/saluser/ts_repos/ts_myproject
         python -m pip install -e .
 
     In the example above replace ``ts_myproject`` with the name of the project you are working on.
@@ -111,13 +111,13 @@ First you start by creating a group called saluser with the group id of 73006 an
 
 .. note:: You'll need to logout and login again for this change to take effect.
 
-The next step is to change group ownership of the tsrepos to saluser and set the default group set bit so that future files and directory are owned by saluser.
+The next step is to change group ownership of the ts_repos to saluser and set the default group set bit so that future files and directory are owned by saluser.
 
 .. prompt:: bash
 
 	chgrp -R saluser ~/Develop/ts_repos/   # This sets the group ownership to saluser for all files and folders under and including ts_repos
 	chmod -R g+s ~/Develop/ts_repos/  # This sets the future files and folders created to directory to be under saluser group otherwise it would be your default user group.
-	setfacl -d -m -R g:73006:rwX ~/Develop/ts_repos/  # This creates an ACL that allows saluser to have read, write and execute permissions for files and folders under ts_repos, the capital X only sets the executable bit for directories which is safer than every file also be executable with a lower case x
+	setfacl -d -R -m g:73006:rwX ~/Develop/ts_repos/  # This creates an ACL that allows saluser to have read, write and execute permissions for files and folders under ts_repos, the capital X only sets the executable bit for directories which is safer than every file also be executable with a lower case x
 	
 Using this method, you can work with the files and folders as bind mounts within both the docker container and as regular storage on your system with no issue.
 You would also not lose the changes each time the container is lost for one reason or another(shutdown or power outage).
