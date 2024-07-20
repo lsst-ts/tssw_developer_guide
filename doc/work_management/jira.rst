@@ -13,29 +13,39 @@ Sprints
 * Before each sprint begins (or after the previous sprint), the product owner and the developer will meet to decide what the tasks will be for each sprint.
 * Load Sprint tasks on the Monday that starts the Sprint.
 * Resolve tasks as soon as possible.
-* On the Friday that ends a sprint.
+
+    * Chase after reviewers if they take too long.
+    * The Scrum Lead may be asked to help with the chasing.
+
+* On the Friday that ends a sprint or the last working day before taking leave if the leave overlaps with the end of the sprint
 
     * Notify Sprint Lead of any tasks that won't be resolved.
     * Notify Sprint Lead why the task won't be resolved.
     * Notify Sprint Lead of time frame work is expected to be resolved.
+    * A Story Point-only task will be created to claim the Story Points so far for the unfinished task.
+
+        * Only the Scrum Lead or manager may review and approve such a task.
 
 * Keep commitment to approximately 8 story points (2 weeks).
 
     * Each sprint assumes 2 story points for meetings and other administrative tasks.
 
 
-Daily Stand
-===========
+Daily Standup
+=============
 
-:Sprint Lead-Scrum Master: Wouter Van Reeven.
+:Sprint Lead-Scrum Master: Wouter van Reeven.
 
 * Meetings are in the DKist Conference Room at 10 AM Tucson time M-F except on holidays.
 
-    .. note:: Given the current situation, stand up has now become BlueJeans only for the foreseeable future.
+    .. note:: Since the pandemic, stand up has predominantly become Zoom only.
 
-* There is a Blue Jeans connection and that number is located in the tssw_scrum channel as a pinned message.
+* There is a Zoom connection and that URL can be obtained from the Scrum Lead and manager.
 * Show up on time.
-* if you are unable to attend, email/message the Sprint Lead to let them know.
+
+    * The Scrum Lead sends a reminder to all team members who don't show up on time.
+
+* If you are unable to attend, email/message the Sprint Lead to let them know.
 
     * For vacations, training, conferences etc, send status update on the last day of work prior to the event.
     * Do not send updates during the event.
@@ -70,19 +80,29 @@ Task Process
     
         * If task is a fixed length (i.e. training/conferences/etc.) create one task (see task creation above).
         * Fixed length tasks can be larger than 5 Story Points.
+        * In case a non-fixed length task needs to be larger than 5 Story Points, discuss with the Sprint Lead or manager.
+        * Short tasks should be 1 or 0.5 SP but no other decimal number. It is preferred that all tasks are in whole number story points.
 
     * If added during a Sprint in progress, notify Sprint Lead if this is out of scope work for the current Sprint.
-    * if work is to be completed during the current Epic's time frame, link to the Epic.
+    * If work is to be completed during the current Epic's time frame, link to the Epic.
 
         * If not, notify Sprint Lead that a new epic is needed.
+
+    * If less than 10 days are worked during a sprint (sickness, vacation, holidays, etc.), reduce the total number of Story Points proportionally.
+
+        * For each day not worked, subtract 0.8 Story Point.
+        * Round up to the nearest 0.5 Story Point to avoid having insufficient Story Points at the end of the fiscal year.
 
     * Required fields to create a task.
 
         Project:
-            Data Management(DM).
+            Data Management (DM). When we go to operations we will likely get our own project.
         
         Issue Type:
-            Task.
+            Story, Bug, or Improvement.
+
+        Status
+            To Do.
 
         Summary:
             Quick description of the work to be accomplished.
@@ -98,12 +118,22 @@ Task Process
         Story Points:
             Size of task (1-5 SP per task).
 
-        Epic Link:
-            Link to the current epic.
-            Epic also determines appropriate WBS number to charge on timesheet.
+        Labels
+            List all labels for the TSSW projects that are affected by the task.
 
-        Team:
+        Linked Issues
+            * Link to any issue related to the task.
+            * For tasks that involve XML changes, special rules apply that the Scrum Lead can explain.
+
+        Sprint
+            Select the sprint for when the task is planned to be worked on.
+
+        RubinTeam:
             Telescope and Site.
+
+        Parent:
+            Link to the current epic.
+            Epics also determine the appropriate WBS number to charge on timesheet.
 
         * Feel free to use any of the other fields, though they are not required.
 
@@ -131,21 +161,20 @@ The following diagram shows the TSSW JIRA task workflow.
 Initial/Triage
 --------------
 
-* Create a Task, Bug or improvement Jira ticket.
+* Create a Story, Bug or improvement Jira ticket.
 * The initial assignee should triage the ticket.
 
   * Ensure it is assigned correctly (Assignee, Component , etc)
 
     * Ensure the ticket is assigned to an actual, currently employed at LSST, person.
-    * Each ticket is assigned a JIRA Epic.
-    * A label with the name of the component should be added to the ticket.
-    * Each ticket is assigned a component that begins with ``ts_``
+    * Each ticket is assigned a JIRA Parent (Epic).
+    * Each ticket is assigned one or more labels that begin with ``ts_``
 
 
   * Ensure the Priority is set correctly (Ticket should not have the "Undefined" priority).
   * A Sprint can be chosen at creation (preferably by the person doing the work for this ticket).
     Otherwise the ticket is automatically placed in the Backlog.
-    If the ticket is in Backlog, once the sprint is known, the ticket should be updated with the current sprint.
+    If the ticket is in Backlog, once the sprint is known, the ticket should be updated with that sprint.
   * The urgent label is reserved for work that impacts nighttime activities at the summit and should be given the utmost priority.
 
 * Once work begins, move the ticket to In Progress
@@ -160,21 +189,24 @@ In Progress
   * No active development is ever done on the main or develop branches.
   * See :ref:`development-workflow` for more information on the development workflow.
 
-* Write the code.
-* Write the unit tests.
+* Implement the code.
+* Implement the unit tests.
 * Update any relevant documentation.
 * When complete, move to In Review.
 
   * Complete meaning:
 
-    * Add a link of the PR to the ticket.
+    * Create one or more PRs.
+
+        * JIRA will automatically add a links to the PR to the ticket.
+
     * Unit tests exist, have been successfully run and results have been added to the ticket or PR.
     * Add a link to the generated documentation site.
 
 In Review
 ---------
 
-* Once the code is complete and all unit tests are passing, initiate a pull request on the develop branch and assign it to the Reviewer(s).
+* Once the code is complete and all unit tests are passing, initiate a PR on the develop branch and assign it to the Reviewer(s).
 * See :ref:`development-workflow-review-etiquete` for more information on the review etiquete.
 * The Reviewer ensures:
 
@@ -185,10 +217,8 @@ In Review
 
 * If issues are found:
 
-  * Update Jira with issue.
-
-    Comments on GitHub PR are preferred instead of in the Jira ticket.
-
+  * Add comments in the PR explaining what should be improved and why.
+  * Request changes to the PR.
   * Sends back to developer:
 
     If conflicts arise during the review process, developers should reach out to the Scrum Master and/or the Software Architect to seek a conflict resolution.
