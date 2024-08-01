@@ -5,4 +5,4 @@
 Onboarding checklist
 ####################
 
-TBD
+See https://developer.lsst.io/team/onboarding.html#checklist-for-hires
