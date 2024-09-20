@@ -46,9 +46,16 @@ It takes the following arguments
 :arch:
 
   This is the architecture of the conda package to create.
-  It can be ``linux-64`` or ``noarch``.
+  It can be ``linux-64``, ``aarch64`` or ``noarch``.
   It may be omitted and defaults to ``linux-64``.
   When specifying ``noarch`` in the conda recipe, this argument *must* be set to ``noarch``.
+
+:upload_dev:
+
+  This specifies if dev packages should be uploaded to the conda repo or not.
+  It defaults to ``false`` which means that the dev packages will not be uploaded.
+  This is in line with the TSSW conda policy.
+  In some cases where a package represents a library that other packages may use, like ts-tcpip and ts-utils, it should be set to ``true``.
 
 .. literalinclude:: ./Jenkinsfile.conda.template
     :caption: Jenkinsfile.conda
