@@ -8,7 +8,7 @@ Exceptions (e.g. see the cycle build) should be well documented in the package a
 
 Tagging a version has the following rules:
 
-  * ticket branches can be tagged with ``vX.Y.Z-alpha.N`` or ``vX.Y.Z-beta.N`` tags
+  * Ticket branches can be tagged with ``vX.Y.Z-alpha.N`` or ``vX.Y.Z-beta.N``
   * The develop branch can be tagged with ``vX.Y.Z-rc.N``
     If your code is using ts_xml develop branch then the CSC release must be tagged here.
   * Main branch is reserved for main tags: ``vX.Y.Z``
@@ -19,6 +19,13 @@ Where X, Y and Z are major, minor and point/hotfix respectively.
 * Use `Annotated tags <https://git-scm.com/book/en/v2/Git-Basics-Tagging>`_ on the main branch
 
   * The Annotation is a meaningful text description of the release
+
+* For the ts_config_* projects, no ``-`` should be used but instead a ``.``.
+
+  * Ticket branches can be tagged with ``vX.Y.Z.alpha.N`` or ``vX.Y.Z.beta.N``
+    In the `cycle.env` file of `ts_cycle_build <https://ts-cycle-build.lsst.io/>`_ the tag needs to be referred to as ``X.Y.ZaN`` or ``X.Y.ZbN``.
+  * The develop branch can be tagged with ``vX.Y.Z.rc.N``
+    In the `cycle.env` file of `ts_cycle_build <https://ts-cycle-build.lsst.io/>`_ the tag needs to be referred to as ``X.Y.ZrcN`` or ``X.Y.ZrcN``.
 
 .. tab-set::
 
