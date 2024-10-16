@@ -20,13 +20,6 @@ Where X, Y and Z are major, minor and point/hotfix respectively.
 
   * The Annotation is a meaningful text description of the release
 
-* For the ts_config_* projects, no ``-`` should be used but instead a ``.``.
-
-  * Ticket branches can be tagged with ``vX.Y.Z.alpha.N`` or ``vX.Y.Z.beta.N``
-    In the `cycle.env` file of `ts_cycle_build <https://ts-cycle-build.lsst.io/>`_ the tag needs to be referred to as ``X.Y.ZaN`` or ``X.Y.ZbN``.
-  * The develop branch can be tagged with ``vX.Y.Z.rc.N``
-    In the `cycle.env` file of `ts_cycle_build <https://ts-cycle-build.lsst.io/>`_ the tag needs to be referred to as ``X.Y.ZrcN`` or ``X.Y.ZrcN``.
-
 .. tab-set::
 
   .. tab-item:: Tag alpha
