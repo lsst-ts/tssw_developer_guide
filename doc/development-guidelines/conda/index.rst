@@ -65,6 +65,12 @@ Adding the Job
 
 Add the job by creating a new item on the Jenkins server and selecting Multibranch Pipeline.
 
+The Daily Workflows assume that Conda packaging jobs follow a very specific naming convention. The name should begin with a meaningful string, usually the package name, with NO special character. The rest of the job name should just be the string ``_conda_package``, i.e.
+
+``<PackageName>_conda_package``
+
+This ensures the job is displyed in the ``Conda Jobs`` view in Jenkins, as well included in the Daily Workflows, once the broker job is updated to add this new Conda packaging build. Simply make a request to the build engineer to get the job added properly.
+
 .. image:: /images/jenkins-conda-adding-the-job-0.png
 
 In ``Branch Sources`` click the github source selection and type in the path of the repo into the ``Respository HTTPS URL``.
