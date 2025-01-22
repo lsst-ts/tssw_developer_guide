@@ -1,4 +1,3 @@
-
 .. _creating_a_new_repository:
 
 #########
@@ -34,6 +33,8 @@ Flavor
   Choose ``DDS Python``
 
 .. image:: /images/sqrbot-jr-3.png
+
+For more information see the `SQuaRE Bot documentation site <https://squarebot.lsst.io/>`_.
 
 Alternatively, you can also use the `template kit tool <https://github.com/lsst/templates>`_ provided by DM.
 Once you have created the repository with its initial commit (either with sqrbot-jr or manually with the template kit), you need to set it up to follow our :ref:`workflow <development_workflow>`.
