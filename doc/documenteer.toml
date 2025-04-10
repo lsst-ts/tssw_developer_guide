@@ -3,7 +3,6 @@ title = "TSSW Developer Guide"
 copyright = "2024 Association of Universities for Research in Astronomy, Inc. (AURA)"
 base_url = "https://tssw-developer.lsst.io"
 github_url = "https://github.com/lsst-ts/tssw_developer_guide"
-version = ""
 
 [sphinx]
 extensions = ["sphinx.ext.autosectionlabel"]

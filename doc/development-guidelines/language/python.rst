@@ -7,7 +7,7 @@ Python
 .. note::
     This guide is under development and is likely to change.
 
-:python version: 3.11
+:python version: 3.12
 :last-updated: |today|
 
 The team uses the following files to configure, setup and install our python packages.
@@ -17,9 +17,19 @@ This guide assumes a repo created with the Templates project or using the sqr-bo
    :caption: pyproject.toml
    :language: toml
 
+.. warning::
+   We need to update the following files in order to make the version module appear correctly.
+   The below files provide a working template for python 3.11 and python 3.12 and the updated setuptools_scm arguments.
+   The __init__.py needs to be changed in order to avoid an import error during installation.
+
 .. literalinclude:: setup.py.example
    :language: python
    :caption: setup.py
+
+.. literalinclude:: __init__.py.example
+   :language: python
+   :caption: __init__.py
+
 
 Style Guide
 ===========
