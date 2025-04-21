@@ -17,6 +17,9 @@ This guide assumes a repo created with the Templates project or using the sqr-bo
    :caption: pyproject.toml
    :language: toml
 
+.. note::
+   The `tool.setuptools_scm` section is mandatory and needs to be empty.
+
 .. warning::
    We need to update the following files in order to make the version module appear correctly.
    The below files provide a working template for python 3.11 and python 3.12 and the updated setuptools_scm arguments.
@@ -25,6 +28,9 @@ This guide assumes a repo created with the Templates project or using the sqr-bo
 .. literalinclude:: setup.py.example
    :language: python
    :caption: setup.py
+
+.. note::
+   Replace `${CSC}` with the CSC pyton module name, e.g. `watcher` or `ess/csc`.
 
 .. literalinclude:: __init__.py.example
    :language: python
