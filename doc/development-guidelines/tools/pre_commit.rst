@@ -22,6 +22,7 @@ The following pre-commit hooks are used:
 :isort: An opinionated import sorter.
 :mypy: Performs type checking on the code (optional).
 :ruff: An extremely fast Python linter, written in Rust.
+:towncrier: Maintain version history via news fragments.
 
 
 ##################
@@ -53,6 +54,7 @@ An example where all ``pre-commit`` hooks are enabled is:
     isort: true
     mypy: true
     ruff: true
+    towncrier: true
 
 
 The ``generate_pre_commit_conf`` command fails with a comprehensive error message if a mandatory or optional ``pre-commit`` hook is missing.
