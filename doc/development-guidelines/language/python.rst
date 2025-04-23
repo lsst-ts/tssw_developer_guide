@@ -20,11 +20,6 @@ This guide assumes a repo created with the Templates project or using the sqr-bo
 .. note::
    The `tool.setuptools_scm` section is mandatory and needs to be empty.
 
-.. warning::
-   We need to update the following files in order to make the version module appear correctly.
-   The below files provide a working template for python 3.11 and python 3.12 and the updated setuptools_scm arguments.
-   The __init__.py needs to be changed in order to avoid an import error during installation.
-
 .. literalinclude:: setup.py.example
    :language: python
    :caption: setup.py
@@ -86,6 +81,7 @@ Once all code changes for a new version have been made, the version history file
    * Issue the following towncrier command:
 
      .. prompt:: bash
+        
         towncrier build --version=vX.Y.Z
 
      See :ref:`Versioning` for a description of the versioning scheme used by TSSW.
