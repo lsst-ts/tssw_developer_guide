@@ -25,7 +25,7 @@ This guide assumes a repo created with the Templates project or using the sqr-bo
    :caption: setup.py
 
 .. note::
-   Replace `${CSC}` with the CSC pyton module name, e.g. `watcher` or `ess/csc`.
+   Replace `${CSC}` with the CSC python module name, e.g. `watcher` or `ess/csc`.
 
 .. literalinclude:: __init__.py.example
    :language: python
