@@ -25,7 +25,7 @@ This guide assumes a repo created with the Templates project or using the sqr-bo
    :caption: setup.py
 
 .. note::
-   Replace `${CSC}` with the CSC pyton module name, e.g. `watcher` or `ess/csc`.
+   Replace `${CSC}` with the CSC python module name, e.g. `watcher` or `ess/csc`.
 
 .. literalinclude:: __init__.py.example
    :language: python
@@ -99,3 +99,14 @@ Once all code changes for a new version have been made, the version history file
 .. note::
    The first time that a PR for `main` is opened, it will contain all commits from `develop`.
    Subsequent PRs will only have the latest commits.
+
+GitHub Workflows
+----------------
+
+In order to facilitate common GitHub workflows, `the tssw_workflows project <https://github.com/lsst-ts/tssw_workflows>`_ has been created.
+One of the workflows verifies that news fragments have been created for the current ticket.
+To call the workflow from your repo, add the following file to the `.github/workflows` directory.
+
+.. literalinclude:: changelog.yaml.example
+   :language: yaml
+   :caption: changelog.yaml
