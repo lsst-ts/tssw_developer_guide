@@ -63,10 +63,11 @@ After adding the towncrier pre-commit hook, copy the following README.rst file i
 After that you can add news fragments following the format instructions in the README.rst file.
 News fragments can be added manually using any text editor or IDE.
 It is also possible to create a news fragment using the towncrier command in a shell.
-The command to create a news fragment is
+The command to create a news fragment is:
 
 .. prompt:: bash
-    towncrier create -c "<News fragment message.>>" DM-XXXXX.<fragment type>.rst
+
+   towncrier create -c "<News fragment message.>>" DM-XXXXX.<fragment type>.rst
 
 The fragment types are explained in the README.rst file.
 The command will take care of adding and increment numbering of the files if multiple news fragments of the same type are added for the same ticket.
