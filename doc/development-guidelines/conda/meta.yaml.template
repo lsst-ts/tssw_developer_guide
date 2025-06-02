@@ -13,8 +13,8 @@ build:
 
 test:
     requires:
-        - ts-conda-build =0.4
-        - ts-idl {{ idl_version }}
+        - ts-conda-build =0.5
+        - ts-xml {{ xml_version }}
         - ts-salobj {{ salobj_version }}
     source_files:
         - pyproject.toml
@@ -27,15 +27,10 @@ requirements:
     host:
         - pip
         - python {{ python }}
-        - setuptools
-        - setuptools_scm
-    build:
-        - python {{ python }}
-        - setuptools
-        - setuptools_scm
+        - setuptools >={{ setuptools}}
+        - setuptools_scm ={{ setuptools_scm}}
     run:
         - python {{ python }}
-        - setuptools
-        - setuptools_scm
         - ts-salobj
+        - ts-xml
         # Add any other runtime dependencies here
