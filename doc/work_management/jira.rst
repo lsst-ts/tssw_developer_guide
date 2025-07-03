@@ -183,7 +183,7 @@ In Progress
 -----------
 
 * Create the ticket branch in the git repos.
-  The branch should be named ``tickets/DM-12345``, where ``DM-12345`` is the ticket number assigned by Jira.
+  The branch should be named ``tickets/OSW-12345``, where ``OSW-12345`` is the ticket number assigned by Jira.
   Once the ticket is pushed to GitHub it is automatically linked to the JIRA component ticket.
 
   * No active development is ever done on the main or develop branches.
