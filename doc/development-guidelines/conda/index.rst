@@ -21,6 +21,9 @@ Keep in mind that the test requirements need to include test framework dependenc
 It is suggested to sort dependencies as that increases readability of the recipe.
 To find the configuration repo, look for the :meth:`get_config_pkg` in the CSC class.
 
+In order to distinguish `noarch` builds for different Python versions, the conda build string needs to be customized.
+This is done with the `string` directive included in the `meta.yaml` template below.
+
 .. literalinclude:: ./meta.yaml.template
     :language: yaml+jinja
     :caption: meta.yaml
