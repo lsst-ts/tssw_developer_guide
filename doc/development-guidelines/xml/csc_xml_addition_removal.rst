@@ -6,7 +6,7 @@ Adding or Removing a CSC from the XML Interface
 ###############################################
 
 The following document lays out the procedure for adding or removing a CSC from the XML interface.
-There are also instructions on the workflow to update an version of OpenSplice.
+There are also instructions on the workflow to update a version of Kafka.
 
 Add/Rename a CSC
 ================
@@ -28,14 +28,14 @@ Remove a CSC
 #. The ticket must be tied to the XML version where the CSC will be removed.
 #. Work on removing the CSC proceeds as normal
 
-Changing the OpenSplice Version
+Changing the Kafka
 ===============================
-#. A subsystem representative must announce the intention to update the openSplice version at the weekly CAP meeting.
+#. A subsystem representative must announce the intention to update the Kafka version at the weekly CAP meeting.
 #. A new CAP Jira ticket must be created.
    Using established CAP tickets is not permitted.
-#. The Summary for the ticket must start with the following text (UPDATE OPENSPLICE)
-#. The ticket must be tied to opensplice version that we are updating to.
-#. Work on updating openSplice proceeds as normal.
+#. The Summary for the ticket must start with the following text (UPDATE KAFKA)
+#. The ticket must be tied to the Kafka version that we are updating to.
+#. Work on updating Kafka proceeds as normal.
 
 Before Release Procedure
 ========================
