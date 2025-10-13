@@ -28,7 +28,7 @@ Remove a CSC
 #. The ticket must be tied to the XML version where the CSC will be removed.
 #. Work on removing the CSC proceeds as normal
 
-Changing the OpenSplice Version
+Changing the Kafka
 ===============================
 #. A subsystem representative must announce the intention to update the Kafka version at the weekly CAP meeting.
 #. A new CAP Jira ticket must be created.
