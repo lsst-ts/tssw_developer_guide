@@ -55,20 +55,30 @@ This functionality is included in the DevelopPipeline for the Jenkins Shared Lib
 Documenteer Configuration
 =========================
 
-..
-    Remove with DM-44045.
-
-.. note:: The following section is for older doc folders to move the new system provided by documenteer 1.0 and above.
-    In the future, this section will be removed once the doc template is updated.
+With documenteer 1.0 and above, it is now necessary to add a documenteer.toml file.
 
 Create a documenteer.toml file using https://documenteer.lsst.io/guides/toml-reference.html as reference material.
 A basic documenteer.toml example is provided below.
 
 .. literalinclude:: ./documenteer.toml.example
 
+.. note::
+    You need to have the package available via pip in order to make the api generation code work.
+    This is true for all of the packages that your package depends on.
+    Conda packages also satisfy the requirement.
+
 You also need to change first line in conf.py to import from the guide config with
 
 .. code:: python
 
     from documenteer.conf.guide import *
+    
+This uses a new theme which provides new `features <https://documenteer.lsst.io/guides/overview.html>`_ such as tabbed groups and mermaid diagram support.
+    
+To build it locally
+
+.. prompt:: bash
+
+    sphinx-build -b html doc doc/_build/html
+
 
