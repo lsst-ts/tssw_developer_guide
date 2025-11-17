@@ -2,13 +2,13 @@
 
 [project]
 # The title of the index page.
-title = ""
+title = "" # i.e. CBP
 # Copyright information displayed on the footer of each page
 copyright = "2019-2024 Association of Universities for Research in Astronomy, Inc. (AURA)"
 
 [project.python]
 # pyproject.toml package name, fills out unseen metadata
-package = ""
+package = "" # i.e. ts_cbp (should match the name that importlib.metadata uses/pyproject.toml name)
 documentation_url_key = "documentation"
 github_url_key = "source_code"
 
@@ -18,4 +18,4 @@ extensions = ["sphinx-jsonschema"]
 [sphinx.intersphinx.projects]
 ts-xml = "https://ts-xml.lsst.io"
 salobj = "https://ts-salobj.lsst.io"
-python = "https://docs.python.org/3.11/"
+python = "https://docs.python.org/3.13/"
