@@ -80,21 +80,36 @@ In ``Branch Sources`` click the github source selection and type in the path of 
 
 .. image:: /images/jenkins-conda-adding-the-job-1.png
 
-Then in the behaviors subsection click the ``add`` button and find the ``Custom GitHub Notification Context`` behavior.
+Then in the *Behaviors* subsection click the ``add`` button. Find the following behaviors and configure them as shown in the image below:
+
+* ``Discover Branches``
+    * Select ``Merging the pull request with the current target branch revision``
+* ``Discover tags``
+* ``Filter by name (with wildcards)``
+    * Set ``Include`` to ``*``
+    * Set ``Exclude`` to ``tickets* main*`` (a space-separate list)
+* ``Clean before checkout``
+* ``Custom GitHub Notification Context``
+* ``Prune stale remote-tracking branches``
+* ``Prune stale tags``
 
 .. image:: /images/jenkins-conda-adding-the-job-2.png
 
 Check the ``Apply Suffix`` box and in the label field add ``/conda`` to the end of the value.
 
-Then in ``Build strategies`` click the ``add`` button and find the ``Tags`` strategies and leave the default values.
+Next, add the ``All branches get the same properties`` in the ``Property strategy`` sub-section.
 
 .. image:: /images/jenkins-conda-adding-the-job-3.png
 
-Then in ``Build Configuration`` add ``.conda`` to the ``Script Path`` field.
+Then in ``Build strategies`` click the ``add`` button and find the ``Tags`` strategies and leave the default values.
 
 .. image:: /images/jenkins-conda-adding-the-job-4.png
 
-Then click ``Apply`` and ``Save``.
+Then in ``Build Configuration`` add ``.conda`` to the ``Script Path`` field.
+
+.. image:: /images/jenkins-conda-adding-the-job-5.png
+
+Finally, click ``Apply`` and ``Save``.
 
 
 .. warning::
