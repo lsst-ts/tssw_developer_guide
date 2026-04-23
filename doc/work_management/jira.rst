@@ -29,6 +29,7 @@ Sprints
 * Keep commitment to approximately 8 story points (2 weeks).
 
     * Each sprint assumes 2 story points for meetings and other administrative tasks.
+    * See :ref:`task-process` for details regarding story point computation.
 
 
 Daily Standup
@@ -66,6 +67,8 @@ Parking Lot
 * Speak with team members that can help with an issue, or are interested in the task.
 * Move lengthy conversations to a different room and/or time.
 
+.. _task-process:
+
 Task Process
 ============
 
@@ -92,23 +95,30 @@ Task Process
 
         * For each day not worked, subtract 0.8 Story Point.
         * Round up to the nearest 0.5 Story Point to avoid having insufficient Story Points at the end of the fiscal year.
+        * Some examples:
+
+            * One day not working leads to 8 - 0.8 = 7.2 SP which will become 7.5 SP
+            * Two days not working leads to 8 - 2 * 0.8 = 6.4 SP which will become 6.5 SP
+            * Three days not working leads to 8 - 3 * 0.8 = 5.6 SP which will become 6.0 SP
+            * Four days not working leads to 8 - 4 * 0.8 = 4.8 SP which will become 5.0 SP
+            * Five days not working leads to 8 - 5 * 0.8 = 4.0 SP which remains 4.0 SP
 
     * Required fields to create a task.
 
-        Project:
-            Data Management (DM). When we go to operations we will likely get our own project.
+        Space:
+            Observatory SoftWare (OSW).
         
-        Issue Type:
+        Work Type:
             Story, Bug, or Improvement.
 
-        Status
+        Status:
             To Do.
 
         Summary:
             Quick description of the work to be accomplished.
 
         Assignee:
-            Click the Assign to me link.
+            Click the ``Assign to me`` link.
 
         Description field:
             * Overview of what the task is to accomplish.
@@ -118,14 +128,14 @@ Task Process
         Story Points:
             Size of task (1-5 SP per task).
 
-        Labels
-            List all labels for the TSSW projects that are affected by the task.
+        Labels:
+            List all labels for the OSW projects that are affected by the task.
 
-        Linked Issues
+        Linked Issues:
             * Link to any issue related to the task.
             * For tasks that involve XML changes, special rules apply that the Scrum Lead can explain.
 
-        Sprint
+        Sprint:
             Select the sprint for when the task is planned to be worked on.
 
         RubinTeam:
@@ -153,7 +163,7 @@ Task Process
 Task Workflow
 -------------
 
-The following diagram shows the TSSW JIRA task workflow.
+The following diagram shows the OSW JIRA task workflow.
 
 .. image:: /images/JiraWorkflow.png
 
