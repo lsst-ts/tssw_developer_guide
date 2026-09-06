@@ -18,11 +18,13 @@ The following pre-commit hooks are used:
 :check-yaml: Checks yaml files for proper format.
 :clang-format: Format files with ClangFormat (optional).
 :flake8: A style checker with many different plugins to enforce different rules.
-:format-xmllint: Feed all XML files through xmllint.
+:format-xmllint: Feed all XML files through xmllint (optional).
+:insert-license: Checks the license header of source code files.
 :isort: An opinionated import sorter.
 :mypy: Performs type checking on the code (optional).
-:ruff: An extremely fast Python linter, written in Rust.
-:towncrier: Maintain version history via news fragments.
+:nbstripout: Removes Juoyter notebooks (optional).
+:ruff: An extremely fast Python linter, written in Rust (optional).
+:towncrier: Maintain version history via news fragments (optional).
 
 
 ##################
@@ -41,7 +43,11 @@ In order for the ``generate_pre_commit_conf`` command to know which ``pre-commit
 This ``.ts-pre-commit-config.yaml`` file contains information that indicates for every ``pre-commit`` whether it should be applied or not.
 The ``.ts-pre-commit-config.yaml`` configuration file can be generated using the ``generate_pre_commit_conf --create`` command, or manually.
 For more information on the command line options, use ``generate_pre_commit_conf --help``.
-An example where all ``pre-commit`` hooks are enabled is:
+
+.. note::
+   When using ruff disable black, flake8 and isort.
+
+The contents should be like this when using black, flake8 and isort:
 
 .. code-block:: yaml
 
@@ -51,17 +57,58 @@ An example where all ``pre-commit`` hooks are enabled is:
     clang-format: true
     flake8: true
     format-xmllint: true
+    insert-license: true
     isort: true
     mypy: true
+    nbstripout: true
+    ruff: false
+    towncrier: true
+
+The contents should be like this when using ruff:
+
+.. code-block:: yaml
+
+    black: false
+    check-xml: true
+    check-yaml: true
+    clang-format: true
+    flake8: false
+    format-xmllint: true
+    insert-license: true
+    isort: false
+    mypy: true
+    nbstripout: true
     ruff: true
     towncrier: true
+
+C/C++ projects should use contents like this:
+
+.. code-block:: yaml
+
+    black: false
+    check-xml: true
+    check-yaml: true
+    clang-format: true
+    flake8: false
+    format-xmllint: true
+    insert-license: true
+    isort: false
+    mypy: false
+    nbstripout: true
+    ruff: false
+    towncrier: true
+
+.. note::
+   The clang-format, format-xmllint, mypy, nbstripout, ruff and towncrier hooks are optional.
+   They may be set to either true or false, depending on the needs of the project.
 
 
 The ``generate_pre_commit_conf`` command fails with a comprehensive error message if a mandatory or optional ``pre-commit`` hook is missing.
 The ``black``, ``check-xml``, ``check-yaml``, ``flake8`` and ``isort`` hooks are mandatory for TSSW projects, so those hooks need to be set to ``true``.
-Setting one or more of the mandatory hooks to ``false`` will make the ``generate_pre_commit_conf`` command fail with a comprehensive error message.
+Setting either ``check-xml`` or ``check-yaml`` ``false`` will make the ``generate_pre_commit_conf`` command fail with a comprehensive error message.
 The ``clang-format``, ``format-xmllint``, ``ruff`` and ``towncrier`` hooks are optional and do not get included by default.
 They can be included by using the corresponding ``--with-XXX`` command line option.
+See also the note above about using either black, flake8 and isort or ruff.
 The ``mypy`` hook is optional and gets included by default.
 It can be excluded by using the corresponding ``--no-mypy`` command line option.
 Setting one or more of the optional hooks to ``false`` or omitting them from the ``.ts-pre-commit-config.yaml`` file will make the ``generate_pre_commit_conf`` command skip those hooks.

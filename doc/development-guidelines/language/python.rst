@@ -44,13 +44,18 @@ Style Guide
 The team uses the following tools to enforce the style guide.
 
 :black: An opinionated autoformatter.
-:isort: An opinionated import sorter.
-:flake8: A style checker with many different plugins to enforce different rules.
-:check-yaml: Checks yaml files for proper format.
 :check-xml: Checks xml files for proper format.
+:check-yaml: Checks yaml files for proper format.
+:clang-format: Format files with ClangFormat (optional).
+:flake8: A style checker with many different plugins to enforce different rules.
+:format-xmllint: Feed all XML files through xmllint (optional).
+:insert-license: Checks the license header of source code files.
+:isort: An opinionated import sorter.
 :mypy: Performs type checking on the code (optional).
+:nbstripout: Removes Juoyter notebooks (optional).
+:ruff: An extremely fast Python linter, written in Rust. When using ruff disable black, flake8 and isort (optional).
+:towncrier: Maintain version history via news fragments (optional, see under Version History).
 
-There are several other optional style guide tools as well.
 This is enforced by a tool called :ref:`pre-commit`.
 
 
