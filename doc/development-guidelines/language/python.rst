@@ -20,6 +20,12 @@ This guide assumes a repo created with the Templates project or using the sqr-bo
 .. note::
    The `tool.setuptools_scm` section is mandatory and needs to be empty.
 
+.. note::
+   Dependencies may be defined in the `project` section, but it is better to omit that to avoid developer confusion.
+   Generally our CI runs with the `pip install --no-deps` flags which means that no dependent packages are installed.
+   Our development tooling simply includes many git repos that are installed via pip with third party packages mostly handled by conda.
+   Ultimately there is no reason to include dependencies listed in pyproject.toml but is not technically harmful.
+
 .. literalinclude:: setup.py.example
    :language: python
    :caption: setup.py
