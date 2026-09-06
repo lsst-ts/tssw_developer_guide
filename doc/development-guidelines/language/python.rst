@@ -7,7 +7,7 @@ Python
 .. note::
     This guide is under development and is likely to change.
 
-:python version: 3.12
+:python version: 3.13 (3.14 in preparation).
 :last-updated: |today|
 
 The team uses the following files to configure, setup and install our python packages.
