@@ -7,7 +7,7 @@ Python
 .. note::
     This guide is under development and is likely to change.
 
-:python version: 3.12
+:python version: 3.13 (3.14 in preparation).
 :last-updated: |today|
 
 The team uses the following files to configure, setup and install our python packages.
@@ -19,6 +19,12 @@ This guide assumes a repo created with the Templates project or using the sqr-bo
 
 .. note::
    The `tool.setuptools_scm` section is mandatory and needs to be empty.
+
+.. note::
+   Dependencies may be defined in the `project` section, but it is better to omit that to avoid developer confusion.
+   Generally our CI runs with the `pip install --no-deps` flags which means that no dependent packages are installed.
+   Our development tooling simply includes many git repos that are installed via pip with third party packages mostly handled by conda.
+   Ultimately there is no reason to include dependencies listed in pyproject.toml but is not technically harmful.
 
 .. literalinclude:: setup.py.example
    :language: python
@@ -38,13 +44,18 @@ Style Guide
 The team uses the following tools to enforce the style guide.
 
 :black: An opinionated autoformatter.
-:isort: An opinionated import sorter.
-:flake8: A style checker with many different plugins to enforce different rules.
-:check-yaml: Checks yaml files for proper format.
 :check-xml: Checks xml files for proper format.
+:check-yaml: Checks yaml files for proper format.
+:clang-format: Format files with ClangFormat (optional).
+:flake8: A style checker with many different plugins to enforce different rules.
+:format-xmllint: Feed all XML files through xmllint (optional).
+:insert-license: Checks the license header of source code files.
+:isort: An opinionated import sorter.
 :mypy: Performs type checking on the code (optional).
+:nbstripout: Removes Juoyter notebooks (optional).
+:ruff: An extremely fast Python linter, written in Rust. When using ruff disable black, flake8 and isort (optional).
+:towncrier: Maintain version history via news fragments (optional, see under Version History).
 
-There are several other optional style guide tools as well.
 This is enforced by a tool called :ref:`pre-commit`.
 
 

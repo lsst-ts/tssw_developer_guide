@@ -7,7 +7,6 @@ name = "ts-{name}"
 description = "{name} is a Commandable SAL Component for the `Vera C. Rubin Observatory <https://lsst.org>`_."
 license = { text = "GPL" }
 classifiers = [ "Programming Language :: Python :: 3" ]
-dependencies = ["pymodbus"]
 readme = "README.rst"
 urls = { documentation = "https://ts-{name}.lsst.io", source_code = "https://github.com/lsst-ts/ts_{name}"}
 dynamic = ["version"]
