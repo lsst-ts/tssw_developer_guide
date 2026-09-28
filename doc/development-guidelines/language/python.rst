@@ -33,6 +33,9 @@ This guide assumes a repo created with the Templates project or using the sqr-bo
 .. note::
    Replace `${CSC}` with the CSC python module name, e.g. `watcher` or `ess/csc`.
 
+.. note::
+   The `local_scheme="no-local-version"` is now required; this strips the git-hash from the version string.
+
 .. literalinclude:: __init__.py.example
    :language: python
    :caption: __init__.py
