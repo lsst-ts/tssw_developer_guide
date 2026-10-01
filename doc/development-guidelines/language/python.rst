@@ -118,10 +118,6 @@ Once all code changes for a new version have been made, the version history file
 GitHub Workflows
 ----------------
 
-In order to facilitate common GitHub workflows, `the tssw_workflows project <https://github.com/lsst-ts/tssw_workflows>`_ has been created.
-One of the workflows verifies that news fragments have been created for the current ticket.
-To call the workflow from your repo, add the following file to the `.github/workflows` directory.
-
-.. literalinclude:: changelog.yaml.example
-   :language: yaml
-   :caption: changelog.yaml
+The ``news_creation`` workflow from `the tssw_workflows project <https://github.com/lsst-ts/tssw_workflows>`_ checks 
+that at least one news fragment has been added for the current ticket. See :ref:`GitHub_Workflows` for instructions
+to add this and other suggested workflows.
