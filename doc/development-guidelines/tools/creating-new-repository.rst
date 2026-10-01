@@ -51,3 +51,4 @@ Once you have created the repository with its initial commit (either with square
   - Include administrators
 
 - At the bottom of the page select "Create"
+- Optionally, add the suggested GitHub workflows described in :ref:`GitHub_Workflows`.
