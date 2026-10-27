@@ -22,7 +22,7 @@ The following pre-commit hooks are used:
 :insert-license: Checks the license header of source code files.
 :isort: An opinionated import sorter.
 :mypy: Performs type checking on the code (optional).
-:nbstripout: Removes Juoyter notebooks (optional).
+:nbstripout: Removes Jupyter notebooks (optional).
 :ruff: An extremely fast Python linter, written in Rust (optional).
 :towncrier: Maintain version history via news fragments (optional).
 
